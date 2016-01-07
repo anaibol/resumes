@@ -1,12 +1,12 @@
 {
-  "name": "cv",
+  "name": "resumes",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.3",
     "jsonfile": "^2.2.3",
-    "resume-to-html": "0.0.21",
+    "jsonresume-theme-elegant": "^1.1.8",
     "resume-to-pdf": "^0.2.7"
   },
   "devDependencies": {},

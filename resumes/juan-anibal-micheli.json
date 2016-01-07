@@ -1,72 +1,317 @@
 {
-  "bio": {
-    "firstName": "Juan Anibal",
-    "lastName": "Micheli",
-    "email": {
-      "work": "richard@piedpiper.com",
-      "personal": "richard.hendriks@gmail.com"
-    },
-    "phone": {
-      "work": "(912) 555-1234",
-      "personal": "(912) 555-4321"
-    },
-    "summary": "Juan Anibal Micheli. He has earned degrees from the University of Oklahoma and Stanford. (Go Sooners and Cardinals!) Before starting Abbeal, he worked for Hooli as a part time software developer.",
+  "basics": {
+    "name": "Juan Anibal Micheli",
+    "label": "Fullstack Javascript Engineer",
+    "phone": "",
+    "website": "",
+    "summary": "● Github profile: https://github.com/anaibol\n● Website: https://anib.al\n\nI am a creative, dynamic, curious, prolific web developer. I like feeling comfortable with the entire stack needed for a web project, from layout and client-side application structure, to backend development and server infrastructure. I am always pursuing new technologies, frameworks and libraries, and I believe web technologies will be soon a multi-platform standard, used for common mobile apps and even for programming robots! And of course, I am in love with Javascript :)",
     "location": {
-      "city": "Paris",
-      "countryCode": "FR",
-      "state": "France"
+      "address": "",
+      "postalCode": "",
+      "city": "",
+      "countryCode": "",
+      "region": ""
     },
-    "websites": {
-      "blog": "http://anib.al"
-    },
-    "profiles": {
-      "github": "anaibol",
-      "twitter": "anibal"
-    }
+    "profiles": []
   },
-  "work": [{
-    "startDate": "2013-12-01",
-    "endDate": null,
-    "position": "Fullstack Developer",
-    "company": "Abbeal",
-    "website": "http://abbeal.com",
-    "summary": "Abbeal is a multi-platform technology based on a proprietary universal compression algorithm that has consistently fielded high Weisman Scores™ that are not merely competitive, but approach the theoretical limit of lossless compression.",
-    "highlights": [
-      "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
-      "Successfully won Techcrunch Disrupt",
-      "Optimized an algorithm that holds the current world record for Weisman Scores"
-    ]
-  }],
-  "education": [{
-    "institution": "University of Oklahoma",
-    "startDate": "2011-06-01",
-    "endDate": "2014-01-01",
-    "area": "Information Technology",
-    "studyType": "Bachelor",
-    "courses": ["DB1101 - Basic SQL", "CS2011 - Java Introduction"]
-  }],
-  "awards": [{
-    "title": "Digital Compression Pioneer Award",
-    "date": "2014-11-01",
-    "awarder": "Techcrunch"
-  }],
-  "publications": [{
-    "name": "Video compression for 3d media",
-    "publisher": "Hooli",
-    "releaseDate": "2014-10-01",
-    "website": "http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)"
-  }],
-  "skills": [{
-    "name": "Web Development",
-    "level": "Master",
-    "keywords": ["HTML", "CSS", "Javascript"]
-  },{
-    "name": "Compression",
-    "level": "Master",
-    "keywords": ["Mpeg", "MP4", "GIF"]
-  }],
-  "references": [{
-    "name": "Erlich Bachman",
-    "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
-  }]
+  "work": [
+    {
+      "company": "HINCH.AS",
+      "position": "Javascript Engineer (AngularJS)",
+      "website": "",
+      "startDate": "undefined-2014-01",
+      "summary": "Built an admin panel for administrating the main site entities. I used AngularJS and Bootstrap UI communicating with a RPC-JSON API with JWT based authentification.",
+      "highlights": [],
+      "endDate": "undefined-2014-01"
+    },
+    {
+      "company": "Wooepa SAS France",
+      "position": "Freelance Fullstack Engineer (MEAN stack)",
+      "website": "",
+      "startDate": "undefined-2013-01",
+      "summary": "Built an event promotion platform from scratch using MongoDB, ExpressJS, AngularJS and Node.js.\nChoice of technologies, decision taking, devising.\nA lot of interaction with Facebook API (Graph API, FQL, invitations, RSVP..). SEO, web scraping, geospatial search, frontend performance optimization, POC with Polymer.",
+      "highlights": [],
+      "endDate": "undefined-2015-01"
+    },
+    {
+      "company": "FWTV",
+      "position": "Web Developer",
+      "website": "",
+      "startDate": "undefined-2013-01",
+      "summary": "PHP, Symfony2, MySQL, Elastic Search, Redis, agile development.\nDigital TV channel, music and sport fans.\nI worked with Symfony2, a great PHP MVC framework, with Doctrine ORM, implemented Elasticsearch for indexing the entities and search them, and Redis for caching DB queries and with Nginx proxy for caching webpages.",
+      "highlights": [],
+      "endDate": "undefined-2013-01"
+    },
+    {
+      "company": "Hoopla",
+      "position": "Web Developer (PHP, Node.js, Magento)",
+      "website": "",
+      "startDate": "undefined-2012-01",
+      "summary": "PHP, NodeJS, Mongodb, MySQL, JQuery, Magento, social API's and some Magento e-commerce.\nI worked in several little (2 weeks) projects, pressure and innovation in a digital agency.",
+      "highlights": [],
+      "endDate": "undefined-2013-01"
+    },
+    {
+      "company": "FriendBall.net",
+      "position": "Web Developer (PHP, Zend framework, MySQL, Frontend and Backend development)",
+      "website": "",
+      "startDate": "undefined-2012-01",
+      "summary": "PHP, Zend framework, OAuth, Facebook API\nFootball social network.\nFacebook integration, chat, mail invitations, frontend and backend development.",
+      "highlights": [],
+      "endDate": "undefined-2012-01"
+    },
+    {
+      "company": "Pragmore",
+      "position": "Web Developer (PHP, Symfony, MySQL, HTML5, CSS3, Frontend and Backend development)",
+      "website": "",
+      "startDate": "undefined-2010-01",
+      "summary": "Symfony, MySQL\nSeveral projects, rapid web development, Symfony 1.2 - 1.4, Doctrine, Mysql. Layout & backend development.",
+      "highlights": [],
+      "endDate": "undefined-2010-01"
+    },
+    {
+      "company": "abbeal",
+      "position": "Fullstack Javascript Contractor",
+      "website": "",
+      "startDate": "2015-10-01",
+      "summary": "ES6/ES7, Redux, React, NodeJS, ExpressJS, React Router, lazy-loading (chunks), critical rendering path",
+      "highlights": []
+    },
+    {
+      "company": "ZehnerGroup",
+      "position": "Fullstack Software Engineer (Flux, React, ES6, Docker Wordpress, Vagrant)",
+      "website": "",
+      "startDate": "2015-02-01",
+      "summary": "Zehnergroup is a US based agency. Working remotely from Argentina and Europe I developed several projects. Some PHP and Wordpress on Vagrant, some beautiful static sites and some ES6 + Flux + React + Docker.",
+      "highlights": [],
+      "endDate": "2015-09-01"
+    }
+  ],
+  "education": [
+    {
+      "institution": "Lycée franco-argentin Jean Mermoz",
+      "area": "",
+      "studyType": "French and Argentinian Bachelor's degrees",
+      "startDate": "1992-01-01",
+      "gpa": "",
+      "courses": [],
+      "endDate": "2008-01-01"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Software Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "French",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "English",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Spanish",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Github",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Git",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Mercurial",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "JSON-RPC",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Cordova",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "OAuth",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Redux",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "jQuery",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Webpack",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Nginx",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "REST",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Babel",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "WordPress",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Facebook API",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Vagrant",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Usability",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Docker",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "SEO",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "JavaScript Libraries",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Bootstrap",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "ReactJS",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Authentication",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "JavaScript",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Node.js",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Web Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "AngularJS",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "PHP",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Linux",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "MongoDB",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Symfony Framework",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Redis",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "Front-end Development",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "HTML5",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "CSS",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "SQL",
+      "level": "",
+      "keywords": []
+    },
+    {
+      "name": "XML",
+      "level": "",
+      "keywords": []
+    }
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "fluency": null
+    },
+    {
+      "language": "French",
+      "fluency": null
+    },
+    {
+      "language": "Spanish",
+      "fluency": null
+    }
+  ]
 }
