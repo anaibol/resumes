@@ -1,0 +1,3 @@
+export const CREATE_RESUME = 'CREATE_RESUME'
+export const EDIT_RESUME = 'EDIT_RESUME'
+export const DELETE_RESUME = 'DELETE_RESUME'

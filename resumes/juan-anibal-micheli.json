@@ -22,7 +22,13 @@
       "startDate": "undefined-2014-01",
       "summary": "Built an admin panel for administrating the main site entities. I used AngularJS and Bootstrap UI communicating with a RPC-JSON API with JWT based authentification.",
       "highlights": [],
-      "endDate": "undefined-2014-01"
+      "endDate": "undefined-2014-01",
+      "languages": ["Javascript"],
+      "tests": "",
+      "frameworks-cms-api": "",
+      "servers": "",
+      "ci": "",
+      "ide": ""
     },
     {
       "company": "Wooepa SAS France",

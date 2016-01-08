@@ -1,10 +1,16 @@
 var express = require('express');
 var app = express();
 
+var proxy = require('proxy-middleware');
+var url = require('url');
+
 var jsonfile = require('jsonfile');
 
-var resumeToPDF = require('resume-to-pdf');
-var resumeToHTML = require('./resume2html');
+var jsonResume = require('./jsonResume');
+
+var webpack = require('webpack');
+var WebpackDevServer = require('webpack-dev-server');
+var config = require('./webpack.config.js')
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -12,21 +18,23 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use('/editor/assets', proxy(url.parse('http://localhost:8080/assets')));
+
 // app.use(express.static('public'));
 
-app.get('/', function (req, res) {
+app.get('/api/resumes', function (req, res) {
   jsonfile.readFile('./resumes/' + 'juan-anibal-micheli' + '.json', function(err, resume) {
       res.json([resume])
   })
 });
 
-app.get('/:name/resume.json', function (req, res) {
+app.get('/api/resumes/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
     res.json(resume)
   })
 });
 
-app.post('/:name/resume.json', function (req, res) {
+app.post('/api/resumes/:name', function (req, res) {
   jsonfile.writeFile('./resumes/' + req.params.name + '.json', req.params.json, function(err, resume) {
     res.json(resume)
   })
@@ -34,24 +42,39 @@ app.post('/:name/resume.json', function (req, res) {
 
 app.get('/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    resumeToHTML(resume, {
-      themeName: 'abbeal-green',
+    jsonResume.resumeToHtml(resume, {
+      theme: 'abbeal-green',
     }, function(data) {
       res.send(data)
     });
   });
 });
 
-app.get('/:name/edit', function (req, res) {
+app.get('/:name/download', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    resumeToHTML(resume, {
-      themeName: 'abbeal-green',
-      editMode: true
-    }, function(data) {
-      res.send(data)
+    jsonResume.resumeToPdf(resume, {
+      theme: 'abbeal-green',
+    }, function(err, buffer) {
+
+      res.sendFile(buffer.filename)
     });
   });
 });
+
+app.get('/editor/:id*?', function (req, res) {
+  res.sendFile(__dirname + '/editor/index.html');
+});
+
+var webpackDevServer = new WebpackDevServer(webpack(config), {
+    contentBase: __dirname,
+    hot: true,
+    quiet: false,
+    noInfo: false,
+    publicPath: "/assets/",
+    stats: { colors: true }
+});
+
+webpackDevServer.listen(8080, "localhost", function() {});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;
