@@ -57,8 +57,9 @@ function getTheme(theme) {
 function resumeToPdf(resumeJson, options, callback) {
     // add css into html as:
     // https://github.com/marcbachmann/node-html-pdf/blob/master/test/businesscard.html
-    resumeToHtml(resumeJson, options, function(htmlResume) {
-        pdf.create(htmlResume, {
+    resumeToHtml(resumeJson, options, function(html) {
+			console.log(html);
+        pdf.create(html, {
             // A4 size? what is that?
             width: '297mm',
             height: '400mm'

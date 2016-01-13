@@ -55,7 +55,6 @@ app.get('/:name/download', function (req, res) {
     jsonResume.resumeToPdf(resume, {
       theme: 'abbeal-green',
     }, function(err, buffer) {
-
       res.sendFile(buffer.filename)
     });
   });
