@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
     "flexboxgrid": "^6.3.0",
     "history": "^1.17.0",
     "html-pdf": "^1.4.0",
@@ -14,7 +15,7 @@
     "lodash": "^3.10.1",
     "marked": "^0.3.5",
     "material-ui": "^0.14.1",
-    "mustache": "^2.2.1",
+    "md5": "^2.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-redux": "^4.0.6",
@@ -22,6 +23,7 @@
     "react-router": "^1.0.3",
     "redux": "^3.0.5",
     "redux-simple-router": "^1.0.2",
+    "request": "^2.67.0",
     "resume-to-markdown": "0.0.14",
     "slugify": "^0.1.1"
   },

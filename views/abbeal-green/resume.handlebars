@@ -1,6 +1,7 @@
+
   <div class="container-fluid">
     <div class="row main clearfix">
-      <a href="#" class="js-floatinfoo="bar"foo="bar"foo="bar"-nav-trigger floating-nav-trigger"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
+      <a href="#" class="js-floating-nav-trigger floating-nav-trigger"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
       <nav class="floating-nav js-floating-nav">
         <ul class="list-unstyled">
           <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
@@ -17,7 +18,7 @@
       <section class="col-md-3 card-wrapper profile-card-wrapper affix">
         <div class="card profile-card">
           <span class="profile-pic-container">
-            <div class="profile-pic"><img data-src="holder.js/100x100" alt="Richard Hendriks" src="//www.gravatar.com/avatar/9acdb04e603c1cac2b893190f6dd5911?s=100&amp;r=pg&amp;d=mm" itemprop="image" class="media-object img-circle center-block"/></div>
+            <div class="profile-pic"><img data-src="holder.js/100x100" alt="Richard Hendriks" src="http://www.gravatar.com/avatar/{{md5email}}?s=100&amp;r=pg&amp;d=mm" itemprop="image" class="media-object img-circle center-block"/></div>
             <div class="name-and-profession text-center">
               <h4 itemprop="name"><b>{{basics.name}}</b></h3>
               <h5 itemprop="jobTitle" class="text-muted">{{basics.label}}</h5>
@@ -30,15 +31,17 @@
             <div class="detail">
               <span class="icon"><i class="icon fs-lg icon-mail"></i></span>
               <span class="info">
-                <a href="/cdn-cgi/l/email-protection#bbc9d2d8d3dac9df95d3ded5dfc9d2d0c8fbd6dad2d795d8d4d6" itemprop="email" class="link-disguise">
-                  <span class="__cf_email__" data-cfemail="a2d0cbc1cac3d0c68ccac7ccc6d0cbc9d1e2cfc3cbce8cc1cdcf">[email&#160;protected]</span><script data-cfhash='f9e31' type="text/javascript">
-                    /* <![CDATA[ */!function(){try{var t="currentScript"in document?document.currentScript:function(){for(var t=document.getElementsByTagName("script"),e=t.length;e--;)if(t[e].getAttribute("data-cfhash"))return t[e]}();if(t&&t.previousSibling){var e,r,n,i,c=t.previousSibling,a=c.getAttribute("data-cfemail");if(a){for(e="",r=parseInt(a.substr(0,2),16),n=2;a.length-n;n+=2)i=parseInt(a.substr(n,2),16)^r,e+=String.fromCharCode(i);e=document.createTextNode(e),c.parentNode.replaceChild(e,c)}t.parentNode.removeChild(t);}}catch(u){}}()/* ]]> */
-                  </script>
+                <a href="mailto:{{basics.email}}" itemprop="email" class="link-disguise">
+                  <span>{{basics.email}}</span>
                 </a>
               </span>
             </div>
-            <div class="detail"><span class="icon"><i class="icon fs-lg icon-link"></i></span><span class="info"><a href="http://richardhendricks.com" target="_blank">http://richardhendricks.com</a></span></div>
-            <div class="detail"><span title="Languages I speak" class="icon"><i class="icon fs-lg icon-language"></i></span><span class="info">English</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-link"></i></span><span class="info"><a href="{{basics.website}}" target="_blank">{{basics.website}}</a></span></div>
+            <div class="detail"><span title="Languages I speak" class="icon"><i class="icon fs-lg icon-language"></i></span>
+              {{#each languages}}
+              <span class="info">{{language}}</span>
+              {{/each}}
+            </div>
           </div>
           <hr/>
           <div class="social-links text-center">
@@ -55,16 +58,20 @@
               <div class="icon"><i class="fs-lg icon-board"></i><span class="mobile-title">About</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">About</h4>
-                <div itemprop="description" class="content">{{summary}}</div>
+                <div itemprop="description" class="content">{{basics.summary}}</div>
               </div>
             </div>
-            {{#work.length}}
+            {{#if skills.length}}
             <div id="skills" class="detail">
               <div class="icon"><i class="fs-lg icon-tools"></i><span class="mobile-title">Skills</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Skills</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each skills}}
+                        Key: {{@key}} Value = {{this}}
+                    {{/each}}
+
                     {{#skills}}
                     <div class="space-top labels">
                       <span class="label label-keyword">{{.}}</span>
@@ -74,16 +81,19 @@
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if works.length}}
             <div id="work-experience" class="detail">
               <div class="icon"><i class="fs-lg icon-office"></i><span class="mobile-title">Work Experience</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Work Experience</h4>
                 <ul class="list-unstyled">
-                  {{#work}}
+                  {{#each works}}
                   <li class="card card-nested clearfix">
                     <div class="content">
-                      <p class="clear-margin relative"><strong>{{position}}</strong>,&nbsp;<a href="http://piedpiper.com" target="_blank">{{Pied Piper}}</a></p>
-                      <p class="text-muted"><small><span class="space-right">{{startDateYear}} - {{endDateYear}}</span><span><i class="icon-clock mr-5"></i>1 year</span></small></p>
+                      <img src="{{website}}/favicon.ico" />
+                      <p class="clear-margin relative"><strong>{{position}}</strong>,&nbsp;<a href="{{website}}" target="_blank">{{company}}</a></p>
+                      <p class="text-muted"><small><span class="space-right">{{startDate}} - {{endDate}}</span><span><i class="icon-clock mr-5"></i>{{formatDate startDate endDate}}</span></small></p>
                       <p>{{summary}}</p>
                       <h5>Highlights</h5>
                       <ul>
@@ -93,121 +103,160 @@
                       </ul>
                       <h5>Skills</h5>
                       <ul class="list-unstyled">
-                        {{#skills}}
-                            <div class="space-top labels">
+                        {{#each skills}}
+                          <div class="space-top labels">
+                            <span class="label label-keyword">{{@key}}</span>
+                            {{#each this}}
                               <span class="label label-keyword">{{.}}</span>
-                            </div>
-                        {{/skills}}
+                            {{/each}}
+                          </div>
+                        {{/each}}
                       </ul>
                     </div>
                   </li>
-                  {{/work}}
+                  {{/each}}
                 </ul>
               </div>
             </div>
-            {{/work.length}}
+            {{/if}}
+            {{#if education.length}}
             <div id="education" class="detail">
               <div class="icon"><i class="fs-lg icon-graduation-cap"></i><span class="mobile-title">Education</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Education</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each education}}
                     <li class="card card-nested">
                       <div class="content">
-                        <p class="clear-margin relative"><strong>Information Technology, Bachelor,&nbsp;</strong>University of Oklahoma</p>
-                        <p class="text-muted"><small>Jun, 2011 - Jan, 2014</small></p>
-                        <i>4.0</i>
-                        <div class="space-top labels"><span class="label label-keyword">DB1101 - Basic SQL</span><span class="label label-keyword">CS2011 - Java Introduction</span></div>
+                        <p class="clear-margin relative"><strong>{{studyType}},&nbsp;</strong>{{institution}}</p>
+                        <p class="text-muted"><small>{{startDate}} - {{endDate}}</small></p>
+                        {{#if gpa}}
+                        <i>{{gpa}}</i>
+                        {{/if}}
+                        {{#if courses}}
+                        <div class="space-top labels">
+                          {{#each courses}}
+                          <span class="label label-keyword">{{.}}</span>
+                          {{/each}}
+                        </div>
+                        {{/if}}
                       </div>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if awards.length}}
             <div id="awards" class="detail">
               <div class="icon"><i class="fs-lg icon-trophy"></i><span class="mobile-title">Awards</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Awards</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each awards}}
                     <li class="card card-nested">
                       <div class="content">
-                        <p itemprop="award" class="clear-margin"><strong>Digital Compression Pioneer Award </strong>Techcrunch</p>
-                        <p class="text-muted"><small>Awarded on: Nov 01, 2014</small></p>
-                        <p class="clear-margin">There is no spoon.</p>
+                        <p itemprop="award" class="clear-margin"><strong>{{title}} </strong>{{awarder}}</p>
+                        <p class="text-muted"><small>Awarded on: {{date}}</small></p>
+                        <p class="clear-margin">{{summary}}</p>
                       </div>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if volunteer.length}}
             <div id="volunteer-work" class="detail">
               <div class="icon"><i class="fs-lg icon-child"></i><span class="mobile-title">Volunteer Work</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Volunteer Work</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each volunteer.length}}
                     <li class="card card-nested">
                       <div class="content">
-                        <p class="clear-margin relative"><strong>Teacher, </strong><a href="http://coderdojo.com/" target="_blank">CoderDojo</a></p>
-                        <p class="text-muted"><small>Jan, 2012 - Jan, 2013</small></p>
-                        <p>Global movement of free coding clubs for young people.</p>
+                        <p class="clear-margin relative"><strong>{{position}}, </strong><a href="{{website}}" target="_blank">{{organization}}</a></p>
+                        <p class="text-muted"><small>{{startDate}} - {{endDate}}</small></p>
+                        <p>{{summary}}</p>
+                        {{#if highlights.length}}
                         <ul>
-                          <li>Awarded 'Teacher of the Month'</li>
+                          {{#each}}
+                          <li>{{.}}</li>
+                          {{/each}}
                         </ul>
+                        {{/if}}
                       </div>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if publications.lenght}}
             <div id="publications" class="detail">
               <div class="icon"><i class="fs-lg icon-newspaper"></i><span class="mobile-title">Publications</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Publications</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each publications}}
                     <li class="card card-nested">
                       <div class="content">
-                        <p class="clear-margin"><strong><a href="http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)" target="_blank">Video compression for 3d media</a>&nbsp;,&nbsp;</strong>Hooli</p>
-                        <p class="text-muted"><small>Published on: Oct 01, 2014</small></p>
-                        <p class="clear-margin">Innovative middle-out compression algorithm that changes the way we store data.</p>
+                        <p class="clear-margin"><strong><a href="http://en.wikipedia.org/wiki/Silicon_Valley_(TV_series)" target="_blank">{{name}}</a>&nbsp;,&nbsp;</strong>{{publisher}}</p>
+                        <p class="text-muted"><small>Published on: {{releaseDate}}</small></p>
+                        <p class="clear-margin">{{summary}}</p>
                       </div>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if interests.length}}
             <div id="interests" class="detail">
               <div class="icon"><i class="fs-lg icon-heart"></i><span class="mobile-title">Interests</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Interests</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each interests}}
                     <li class="card card-nested">
-                      <p><strong>Wildlife</strong></p>
+                      <p><strong>{{name}}</strong></p>
                       <div class="space-top labels"><span class="label label-keyword">Ferrets</span><span class="label label-keyword">Unicorns</span></div>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
+            {{#if references.length}}
             <div id="references" class="detail">
               <div class="icon"><i class="fs-lg icon-thumbs-up"></i><span class="mobile-title">References</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">References</h4>
                 <div class="content">
                   <ul class="list-unstyled">
+                    {{#each references}}
                     <li class="card card-nested">
-                      <p><strong>Erlich Bachman</strong></p>
+                      <p><strong>{{name}}</strong></p>
                       <blockquote class="quote">
-                        <p class="clear-margin">It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company.</p>
+                        <p class="clear-margin">{{reference}}</p>
                       </blockquote>
                     </li>
+                    {{/each}}
                   </ul>
                 </div>
               </div>
             </div>
+            {{/if}}
           </div>
         </div>
       </section>
