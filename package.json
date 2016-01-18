@@ -14,7 +14,7 @@
     "jsonresume-theme-elegant": "^1.1.8",
     "lodash": "^3.10.1",
     "marked": "^0.3.5",
-    "material-ui": "^0.14.1",
+    "material-ui": "^0.14.2",
     "md5": "^2.0.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
@@ -25,7 +25,9 @@
     "redux-simple-router": "^1.0.2",
     "request": "^2.67.0",
     "resume-to-markdown": "0.0.14",
-    "slugify": "^0.1.1"
+    "slugify": "^0.1.1",
+    "webpack": "^1.12.11",
+    "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",

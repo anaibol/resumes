@@ -177,6 +177,9 @@
 .clear-margin {
   margin: 0;
 }
+.clear-padding {
+  padding: 0;
+}
 .space-top {
   margin-top: 10px;
 }
@@ -299,6 +302,9 @@ body {
 }
 .background-details .detail .info {
   width: 100%;
+}
+.background-details .detail .info .company-logo {
+  margin: 0 20px 20px 0;
 }
 .background-details .detail .title,
 .background-details .detail .icon {
@@ -489,9 +495,18 @@ body {
     padding: 10px 0;
   }
 }
-.profile-pic img {
+.profile-pic .pic-container {
   width: 100px;
   height: 100px;
+	margin: auto;
+	position: relative;
+}
+.profile-pic .abbeal-logo {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	right: 0px;
+	bottom: 0px;
 }
 @media (max-width: 992px) {
   .name {
@@ -523,6 +538,12 @@ body {
 .contact-details .detail .info {
   display: table-cell;
   vertical-align: middle;
+}
+.contact-details .detail.languages .info:after {
+  content: ', '
+}
+.contact-details .detail.languages .info:last-of-type:after {
+  content: ''
 }
 @media (max-width: 768px) {
   .contact-details .detail {

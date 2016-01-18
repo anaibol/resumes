@@ -1,24 +1,19 @@
 
   <div class="container-fluid">
     <div class="row main clearfix">
-      <a href="#" class="js-floating-nav-trigger floating-nav-trigger"><i class="icon-bars"></i><span class="close-icon">&times;</span></a>
-      <nav class="floating-nav js-floating-nav">
-        <ul class="list-unstyled">
-          <li><a href="#about"><i class="mr-10 icon-board"></i>About</a></li>
-          <li><a href="#work-experience"><i class="mr-10 icon-office"></i>Work Experience</a></li>
-          <li><a href="#skills"><i class="mr-10 icon-tools"></i>Skills</a></li>
-          <li><a href="#education"><i class="mr-10 icon-graduation-cap"></i>Education</a></li>
-          <li><a href="#awards"><i class="mr-10 icon-trophy"></i>Awards</a></li>
-          <li><a href="#volunteer-work"><i class="mr-10 icon-child"></i>Volunteer Work</a></li>
-          <li><a href="#publications"><i class="mr-10 icon-newspaper"></i>Publications</a></li>
-          <li><a href="#interests"><i class="mr-10 icon-heart"></i>Interests</a></li>
-          <li><a href="#references"><i class="mr-10 icon-thumbs-up"></i>References</a></li>
-        </ul>
-      </nav>
+      {{!-- <a href="#" class="js-floating-nav-trigger floating-nav-trigger"><i class="icon-bars"></i><span class="close-icon">&times;</span></a> --}}
       <section class="col-md-3 card-wrapper profile-card-wrapper affix">
         <div class="card profile-card">
+          <a href="./resume/{{slugName}}/download" download>Download as PDF</a>
+          <a href="javascript:void(0)" onclick="printDocument('pdfDocument')">Print</a>
+          <div><img alt="{{basics.name}}" src="./css/abbeal-green/logo-abbeal.png" itemprop="image" class="media-object center-block"/></div>
           <span class="profile-pic-container">
-            <div class="profile-pic"><img data-src="holder.js/100x100" alt="Richard Hendriks" src="http://www.gravatar.com/avatar/{{md5email}}?s=100&amp;r=pg&amp;d=mm" itemprop="image" class="media-object img-circle center-block"/></div>
+            <div class="profile-pic">
+              <div class="pic-container">
+                <img alt="{{basics.name}}" src="http://www.gravatar.com/avatar/{{md5email}}" itemprop="image" class="media-object img-circle center-block gravatar"/>
+                <img alt="Abbeal" src="./css/abbeal-green/abbeille.png"  width="50" height="50" itemprop="image" class="abbeal-logo"/>
+              </div>
+            </div>
             <div class="name-and-profession text-center">
               <h4 itemprop="name"><b>{{basics.name}}</b></h3>
               <h5 itemprop="jobTitle" class="text-muted">{{basics.label}}</h5>
@@ -37,9 +32,9 @@
               </span>
             </div>
             <div class="detail"><span class="icon"><i class="icon fs-lg icon-link"></i></span><span class="info"><a href="{{basics.website}}" target="_blank">{{basics.website}}</a></span></div>
-            <div class="detail"><span title="Languages I speak" class="icon"><i class="icon fs-lg icon-language"></i></span>
+            <div class="detail languages"><span title="Languages I speak" class="icon"><i class="icon fs-lg icon-language"></i></span>
               {{#each languages}}
-              <span class="info">{{language}}</span>
+                <span class="info">{{language}}</span>
               {{/each}}
             </div>
           </div>
@@ -61,27 +56,24 @@
                 <div itemprop="description" class="content">{{basics.summary}}</div>
               </div>
             </div>
-            {{#if skills.length}}
             <div id="skills" class="detail">
               <div class="icon"><i class="fs-lg icon-tools"></i><span class="mobile-title">Skills</span></div>
               <div class="info">
                 <h4 class="title text-uppercase">Skills</h4>
                 <div class="content">
                   <ul class="list-unstyled">
-                    {{#each skills}}
-                        Key: {{@key}} Value = {{this}}
-                    {{/each}}
-
-                    {{#skills}}
                     <div class="space-top labels">
-                      <span class="label label-keyword">{{.}}</span>
+                    {{#each skills}}
+                        {{!-- <span class="label label-keyword">{{@key}}</span> --}}
+                        {{#each this}}
+                          <span class="label label-keyword">{{.}}</span>
+                        {{/each}}
+                    {{/each}}
                     </div>
-                    {{/skills}}
                   </ul>
                 </div>
               </div>
             </div>
-            {{/if}}
             {{#if works.length}}
             <div id="work-experience" class="detail">
               <div class="icon"><i class="fs-lg icon-office"></i><span class="mobile-title">Work Experience</span></div>
@@ -90,29 +82,37 @@
                 <ul class="list-unstyled">
                   {{#each works}}
                   <li class="card card-nested clearfix">
+                    <p class="relative"><strong>{{position}}</strong>,&nbsp;<a href="{{website}}" target="_blank">{{company}}</a></p>
+                    <div class="company-logo pull-left clear-margin clear-padding">
+                      <img src="{{logo}}" class="img-responsive" />
+                    </div>
                     <div class="content">
-                      <img src="{{website}}/favicon.ico" />
-                      <p class="clear-margin relative"><strong>{{position}}</strong>,&nbsp;<a href="{{website}}" target="_blank">{{company}}</a></p>
                       <p class="text-muted"><small><span class="space-right">{{startDate}} - {{endDate}}</span><span><i class="icon-clock mr-5"></i>{{formatDate startDate endDate}}</span></small></p>
                       <p>{{summary}}</p>
-                      <h5>Highlights</h5>
+                      {{#if highlights.length}}
+                      <h5><strong>Highlights</strong></h5>
                       <ul>
-                        {{#highlights}}
+                        {{#each highlights}}
                         <li>{{.}}</li>
-                        {{/highlights}}
-                      </ul>
-                      <h5>Skills</h5>
-                      <ul class="list-unstyled">
-                        {{#each skills}}
-                          <div class="space-top labels">
-                            <span class="label label-keyword">{{@key}}</span>
-                            {{#each this}}
-                              <span class="label label-keyword">{{.}}</span>
-                            {{/each}}
-                          </div>
                         {{/each}}
                       </ul>
+                      {{/if}}
                     </div>
+                    <div class="row">
+                      <div class="content col-md-12">
+                        <h5><strong>Skills</strong></h5>
+                        <ul class="list-unstyled">
+                          <div class="space-top labels">
+                          {{#each skills}}
+                              {{!-- <span class="label label-keyword">{{@key}}</span> --}}
+                              {{#each this}}
+                                <span class="label label-keyword">{{.}}</span>
+                              {{/each}}
+                          {{/each}}
+                          </div>
+                        </ul>
+                      </div>
+                    </div
                   </li>
                   {{/each}}
                 </ul>
@@ -130,7 +130,7 @@
                     <li class="card card-nested">
                       <div class="content">
                         <p class="clear-margin relative"><strong>{{studyType}},&nbsp;</strong>{{institution}}</p>
-                        <p class="text-muted"><small>{{startDate}} - {{endDate}}</small></p>
+                        <p class="text-muted"><small><span class="space-right">{{startDate}} - {{endDate}}</span><span><i class="icon-clock mr-5"></i>{{formatDate startDate endDate}}</span></small></p>
                         {{#if gpa}}
                         <i>{{gpa}}</i>
                         {{/if}}
@@ -177,15 +177,15 @@
                 <h4 class="title text-uppercase">Volunteer Work</h4>
                 <div class="content">
                   <ul class="list-unstyled">
-                    {{#each volunteer.length}}
+                    {{#each volunteer}}
                     <li class="card card-nested">
                       <div class="content">
                         <p class="clear-margin relative"><strong>{{position}}, </strong><a href="{{website}}" target="_blank">{{organization}}</a></p>
-                        <p class="text-muted"><small>{{startDate}} - {{endDate}}</small></p>
+                        <p class="text-muted"><small><span class="space-right">{{startDate}} - {{endDate}}</span><span><i class="icon-clock mr-5"></i>{{formatDate startDate endDate}}</span></small></p>
                         <p>{{summary}}</p>
                         {{#if highlights.length}}
                         <ul>
-                          {{#each}}
+                          {{#each highlights}}
                           <li>{{.}}</li>
                           {{/each}}
                         </ul>
@@ -258,68 +258,16 @@
             </div>
             {{/if}}
           </div>
+          <div><img alt="{{basics.name}}" src="./css/abbeal-green/logo-abbeal.png" itemprop="image" class="media-object center-block"/></div>
         </div>
       </section>
     </div>
   </div>
-
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/tooltip.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/js/collapse.js"></script><script>$(function () {
-    var toggleFloatingMenu = function() {
-      $( '.js-floating-nav' ).toggleClass( 'is-visible' );
-      $( '.js-floating-nav-trigger' ).toggleClass( 'is-open' );
-    };
-
-    $( ".background-card" ).css( "min-height", window.screen.availHeight + "px" );
-    $( "[rel=tooltip]" ).tooltip();
-    $( '.js-floating-nav-trigger' ).on( 'click', function(e) {
-      e.preventDefault();
-      toggleFloatingMenu();
-    });
-    $( '.js-floating-nav a' ).on( 'click', toggleFloatingMenu );
-
-    $("#remaining-profiles").on('show.bs.collapse', function() {
-      $( '.js-profiles-collapse > i' )
-        .removeClass( 'icon-chevron-down' )
-        .addClass( 'icon-chevron-up' );
-    });
-
-    $("#remaining-profiles").on('hidden.bs.collapse', function() {
-      $( '.js-profiles-collapse > i' )
-        .removeClass( 'icon-chevron-up' )
-        .addClass( 'icon-chevron-down' );
-    });
-    });
-  </script><script>WebFontConfig = {
-    google: { families: [ 'Lato:300,400,700:latin' ] }
-    };
-    (function() {
-    var wf = document.createElement('script');
-    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-    wf.type = 'text/javascript';
-    wf.async = 'true';
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(wf, s);
-    })();
-  </script><script type="text/javascript">
-    /* <![CDATA[ */
-    (function(){try{var s,a,i,j,r,c,l=document.getElementsByTagName("a"),t=document.createElement("textarea");for(i=0;l.length-i;i++){try{a=l[i].getAttribute("href");if(a&&a.indexOf("/cdn-cgi/l/email-protection") > -1  && (a.length > 28)){s='';j=27+ 1 + a.indexOf("/cdn-cgi/l/email-protection");if (a.length > j) {r=parseInt(a.substr(j,2),16);for(j+=2;a.length>j&&a.substr(j,1)!='X';j+=2){c=parseInt(a.substr(j,2),16)^r;s+=String.fromCharCode(c);}j+=1;s+=a.substr(j,a.length-j);}t.innerHTML=s.replace(/</g,"&lt;").replace(/>/g,"&gt;");l[i].setAttribute("href","mailto:"+t.value);}}catch(e){}}}catch(e){}})();
-    /* ]]> */
-  </script> -->
-
-
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.1.6/zepto.min.js"></script>
-<script type="text/javascript">
-  var editableElms = $('strong, p, h1, h2, h3, h4, h5');
-
-  editableElms.on('click', function (e) {
-    $(this).attr('contenteditable', true)
-  })
-  .on('blur', function(e) {
-    window.resume[$(this).data('key')] = $(this).text()
-  })
-
-  .on('change', function (e) {})
-
-
-</script> -->
+  {{!-- <iframe id="printf" name="printf" src="http://localhost:3000/resume/{{slugName}}/download" width="1px" height="1px" /> --}}
+  {{!-- <embed
+      type="application/pdf"
+      src="http://localhost:3000/resume/{{slugName}}/download"
+      id="pdfDocument"
+      width="100%"
+      height="100%">
+  </embed> --}}

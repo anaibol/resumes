@@ -21,9 +21,9 @@
         "url": ""
       },
       {
-        "network": "SoundCloud",
-        "username": "dandymusicnl",
-        "url": "https://soundcloud.com/dandymusicnl"
+        "network": "Github",
+        "username": "anaibol",
+        "url": ""
       }
     ]
   },
@@ -31,28 +31,54 @@
     {
       "company": "abbeal",
       "position": "Fullstack Javascript Contractor",
-      "website": "",
+      "website": "http://abbeal.com",
+      "logo": "https://media.licdn.com/media/AAEAAQAAAAAAAAN5AAAAJDZkNWEzMzYwLTcwYzYtNDRlZS1iZDIzLWRiNmZkOTU4ZGFiMQ.png",
       "startDate": "10-2015",
       "summary": "ES6/ES7, Redux, React, NodeJS, ExpressJS, React Router, lazy-loading (chunks), critical rendering path",
-      "highlights": []
+      "highlights": [],
+      "skills": {
+        "Languages": ["Javascript", "PHP"],
+        "Tests": [],
+        "Frameworks, CMS-API": ["AngularJS"],
+        "Servers": [],
+        "Continuous Integration": [],
+        "IDE": ["Sublime Text 2"]
+      }
     },
     {
       "company": "ZehnerGroup",
       "position": "Fullstack Software Engineer (Flux, React, ES6, Docker Wordpress, Vagrant)",
-      "website": "",
+      "website": "http://zehnergroup.com",
+      "logo": "http://zehnergroup.com",
       "startDate": "02-2015",
       "summary": "Zehnergroup is a US based agency. Working remotely from Argentina and Europe I developed several projects. Some PHP and Wordpress on Vagrant, some beautiful static sites and some ES6 + Flux + React + Docker.",
       "highlights": [],
-      "endDate": "09-2015"
-    }
+      "endDate": "09-2015",
+      "skills": {
+        "Languages": ["Javascript", "PHP"],
+        "Tests": [],
+        "Frameworks, CMS-API": ["ReactJS"],
+        "Servers": [],
+        "Continuous Integration": [],
+        "IDE": ["Atom"]
+      }
+    },
     {
       "company": "Wooepa SAS France",
       "position": "Freelance Fullstack Engineer (MEAN stack)",
-      "website": "",
+      "website": "http://wooepa.com",
       "startDate": "01-2013",
       "endDate": "01-2015",
       "summary": "Built an event promotion platform from scratch using MongoDB, ExpressJS, AngularJS and Node.js.\nChoice of technologies, decision taking, devising.\nA lot of interaction with Facebook API (Graph API, FQL, invitations, RSVP..). SEO, web scraping, geospatial search, frontend performance optimization, POC with Polymer.",
-      "highlights": []
+      "highlights": [],
+      "skills": {
+        "Languages": ["Javascript", "PHP"],
+        "Tests": [],
+        "Frameworks, CMS-API": ["Zend"],
+        "Servers": [],
+        "Continuous Integration": [],
+        "IDE": ["Webstorm"]
+      }
     },
     {
       "company": "HINCH.AS",
@@ -78,6 +104,7 @@
       "company": "FWTV",
       "position": "Web Developer",
       "website": "http://fwtv.tv",
+      "logo": "http://fwtv.tv",
       "startDate": "01-2013",
       "endDate": "01-2013",
       "summary": "PHP, Symfony2, MySQL, Elastic Search, Redis, agile development.\nDigital TV channel, music and sport fans.\nI worked with Symfony2, a great PHP MVC framework, with Doctrine ORM, implemented Elasticsearch for indexing the entities and search them, and Redis for caching DB queries and with Nginx proxy for caching webpages.",
@@ -87,6 +114,7 @@
       "company": "Hoopla",
       "position": "Web Developer (PHP, Node.js, Magento)",
       "website": "http://hoopla.la",
+      "logo": "http://hoopla.la",
       "startDate": "01-2012",
       "endDate": "01-2013",
       "summary": "PHP, NodeJS, Mongodb, MySQL, JQuery, Magento, social API's and some Magento e-commerce.\nI worked in several little (2 weeks) projects, pressure and innovation in a digital agency.",
@@ -96,6 +124,7 @@
       "company": "FriendBall.net",
       "position": "Web Developer (PHP, Zend framework, MySQL, Frontend and Backend development)",
       "website": "http://friendball.net",
+      "logo": "http://friendball.net",
       "startDate": "01-2012",
       "endDate": "01-2012",
       "summary": "PHP, Zend framework, OAuth, Facebook API\nFootball social network.\nFacebook integration, chat, mail invitations, frontend and backend development.",
@@ -105,6 +134,7 @@
       "company": "Pragmore",
       "position": "Web Developer (PHP, Symfony, MySQL, HTML5, CSS3, Frontend and Backend development)",
       "website": "http://pragmore.com",
+      "logo": "http://pragmore.com",
       "startDate": "01-2010",
       "summary": "Symfony, MySQL\nSeveral projects, rapid web development, Symfony 1.2 - 1.4, Doctrine, Mysql. Layout & backend development.",
       "highlights": [],
@@ -152,11 +182,6 @@
       "summary": "Innovative middle-out compression algorithm that changes the way we store data."
     }
   ],
-  "skills": {
-    "name": "Software Development",
-    "level": "",
-    "keywords": []
-  },
   "languages": [
     {
       "language": "English",
