@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect, PromiseState } from 'react-refetch'
 import ResumeView from '../components/View'
 import DumpInput from '../components/DumpInput'
-import * as ResumeActions from '../actions/resume'
 import Form from '../components/Form'
 
 export default class Edit extends Component {
