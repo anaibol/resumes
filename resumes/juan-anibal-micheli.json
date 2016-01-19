@@ -33,7 +33,7 @@
       "position": "Fullstack Javascript Contractor",
       "website": "http://abbeal.com",
       "logo": "https://media.licdn.com/media/AAEAAQAAAAAAAAN5AAAAJDZkNWEzMzYwLTcwYzYtNDRlZS1iZDIzLWRiNmZkOTU4ZGFiMQ.png",
-      "startDate": "10-2015",
+      "startDate": "2015-01-10",
       "summary": "ES6/ES7, Redux, React, NodeJS, ExpressJS, React Router, lazy-loading (chunks), critical rendering path",
       "highlights": [],
       "skills": {
@@ -50,10 +50,10 @@
       "position": "Fullstack Software Engineer (Flux, React, ES6, Docker Wordpress, Vagrant)",
       "website": "http://zehnergroup.com",
       "logo": "http://zehnergroup.com",
-      "startDate": "02-2015",
+      "startDate": "2015-01-02",
+      "endDate": "2015-01-09",
       "summary": "Zehnergroup is a US based agency. Working remotely from Argentina and Europe I developed several projects. Some PHP and Wordpress on Vagrant, some beautiful static sites and some ES6 + Flux + React + Docker.",
       "highlights": [],
-      "endDate": "09-2015",
       "skills": {
         "Languages": ["Javascript", "PHP"],
         "Tests": [],
@@ -67,8 +67,8 @@
       "company": "Wooepa SAS France",
       "position": "Freelance Fullstack Engineer (MEAN stack)",
       "website": "http://wooepa.com",
-      "startDate": "01-2013",
-      "endDate": "01-2015",
+      "startDate": "2013-01-01",
+      "endDate": "2015-01-01",
       "summary": "Built an event promotion platform from scratch using MongoDB, ExpressJS, AngularJS and Node.js.\nChoice of technologies, decision taking, devising.\nA lot of interaction with Facebook API (Graph API, FQL, invitations, RSVP..). SEO, web scraping, geospatial search, frontend performance optimization, POC with Polymer.",
       "highlights": [],
       "skills": {
@@ -84,7 +84,7 @@
       "company": "HINCH.AS",
       "position": "Javascript Engineer (AngularJS)",
       "website": "http://hinch.as",
-      "startDate": "01-2014",
+      "startDate": "2014-01-01",
       "summary": "Built an admin panel for administrating the main site entities. I used AngularJS and Bootstrap UI communicating with a RPC-JSON API with JWT based authentification.",
       "skills": {
         "Languages": ["Javascript", "PHP"],
@@ -105,8 +105,8 @@
       "position": "Web Developer",
       "website": "http://fwtv.tv",
       "logo": "http://fwtv.tv",
-      "startDate": "01-2013",
-      "endDate": "01-2013",
+      "startDate": "2013-01-01",
+      "endDate": "2013-01-01",
       "summary": "PHP, Symfony2, MySQL, Elastic Search, Redis, agile development.\nDigital TV channel, music and sport fans.\nI worked with Symfony2, a great PHP MVC framework, with Doctrine ORM, implemented Elasticsearch for indexing the entities and search them, and Redis for caching DB queries and with Nginx proxy for caching webpages.",
       "highlights": []
     },
@@ -115,8 +115,8 @@
       "position": "Web Developer (PHP, Node.js, Magento)",
       "website": "http://hoopla.la",
       "logo": "http://hoopla.la",
-      "startDate": "01-2012",
-      "endDate": "01-2013",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
       "summary": "PHP, NodeJS, Mongodb, MySQL, JQuery, Magento, social API's and some Magento e-commerce.\nI worked in several little (2 weeks) projects, pressure and innovation in a digital agency.",
       "highlights": []
     },
@@ -125,8 +125,8 @@
       "position": "Web Developer (PHP, Zend framework, MySQL, Frontend and Backend development)",
       "website": "http://friendball.net",
       "logo": "http://friendball.net",
-      "startDate": "01-2012",
-      "endDate": "01-2012",
+      "startDate": "2012-01-01",
+      "endDate": "2012-01-01",
       "summary": "PHP, Zend framework, OAuth, Facebook API\nFootball social network.\nFacebook integration, chat, mail invitations, frontend and backend development.",
       "highlights": []
     },
@@ -135,10 +135,10 @@
       "position": "Web Developer (PHP, Symfony, MySQL, HTML5, CSS3, Frontend and Backend development)",
       "website": "http://pragmore.com",
       "logo": "http://pragmore.com",
-      "startDate": "01-2010",
+      "startDate": "2010-01-01",
+      "endDate": "2010-01-01",
       "summary": "Symfony, MySQL\nSeveral projects, rapid web development, Symfony 1.2 - 1.4, Doctrine, Mysql. Layout & backend development.",
-      "highlights": [],
-      "endDate": "01-2010"
+      "highlights": []
     }
   ],
   "volunteer": [
@@ -146,8 +146,8 @@
       "organization": "CoderDojo",
       "position": "Teacher",
       "website": "http://coderdojo.com/",
-      "startDate": "01-2012-01",
-      "endDate": "01-2013-01",
+      "startDate": "2012-01-01",
+      "endDate": "2013-01-01",
       "summary": "Global movement of free coding clubs for young people.",
       "highlights": [
         "Awarded 'Teacher of the Month'"
@@ -160,9 +160,9 @@
       "area": "",
       "studyType": "French and Argentinian Bachelor's degrees",
       "startDate": "1992-01-01",
+      "endDate": "2008-01-01",
       "gpa": "",
-      "courses": [],
-      "endDate": "2008-01-01"
+      "courses": []
     }
   ],
   "awards": [
@@ -185,15 +185,15 @@
   "languages": [
     {
       "language": "English",
-      "fluency": null
+      "fluency": "Intermediate"
     },
     {
       "language": "French",
-      "fluency": null
+      "fluency": "Intermediate"
     },
     {
       "language": "Spanish",
-      "fluency": null
+      "fluency": "Intermediate"
     }
   ],
   "interests": [

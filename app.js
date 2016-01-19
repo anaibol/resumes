@@ -37,7 +37,27 @@ var hbs = expressHandlebars({
 
       var months = endDate.diff(startDate, 'months');
 
-      var duration = years + ' years ' + months + ' months ';
+      var yr;
+
+      if (years > 1) {
+        yr = years + ' years';
+      } else if (years > 0) {
+        yr = '1 year';
+      } else {
+        yr = ''
+      }
+
+      var mn;
+
+      if (months > 1) {
+        mn = months + ' months';
+      } else if (months > 0) {
+        mn = '1 month';
+      } else {
+        mn = '';
+      }
+
+      var duration = yr + ' ' + mn;
 
       return duration
     }
@@ -56,19 +76,19 @@ app.use(function(req, res, next) {
 app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
 app.use('/css', express.static(__dirname + '/theme/'));
 
-app.get('/api/resumes', function (req, res) {
-  jsonfile.readFile('./resumes/' + 'juan-anibal-micheli' + '.json', function(err, resume) {
-      res.json([resume])
-  });
+app.get('/api/resume', function (req, res) {
+  res.sendFile(__dirname + '/resumes/' + req.params.name + '.json');
 });
 
-app.get('/api/resumes/:name', function (req, res) {
-  jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    res.json(resume)
-  });
+app.get('/api/schema', function (req, res) {
+  res.sendFile(__dirname + '/jsonSchema.json');
 });
 
-app.post('/api/resumes/:name', function (req, res) {
+app.get('/api/resume/:name', function (req, res) {
+  res.sendFile(__dirname + '/resumes/' + req.params.name + '.json');
+});
+
+app.post('/api/resume/:name', function (req, res) {
   jsonfile.writeFile('./resumes/' + req.params.name + '.json', req.params.json, function(err, resume) {
     res.json(resume)
   });
@@ -118,6 +138,33 @@ app.get('/resume/:name/download', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
     if (err) return;
 
+    if (resume.works) {
+      var skills = {
+        "Languages": [],
+        "Tests": [],
+        "Frameworks, CMS-API": [],
+        "Servers": [],
+        "Continuous Integration": [],
+        "IDE": []
+      }
+
+      resume.works.forEach(function(work) {
+        if (work.skills) {
+          for (var skill in work.skills) {
+            work.skills[skill].forEach(function(sk) {
+              skills[skill].push(sk);
+            })
+          }
+        }
+      });
+
+      for (var skill in skills) {
+        skills[skill] = _.uniq(skills[skill]);
+      }
+
+      resume.skills = skills;
+    }
+
     app.render('abbeal-green' + '/resume', Object.assign(resume, {
       theme: 'abbeal-green',
       pdf: 'true',
@@ -125,30 +172,21 @@ app.get('/resume/:name/download', function (req, res) {
       baseUrl: req.protocol + '://' + req.get('host'),
       md5email: md5(resume.basics.email)
     }), function(err, html) {
-      console.log(err);
       pdf.create(html, {
         // A4 size? what is that?
-        width: '297mm',
-        height: '400mm',
-        "border": {
-          "top": "1in",            // default is 0, units: mm, cm, in, px
-          "right": "1in",
-          "bottom": "2in",
-          "left": "1.5in"
-        }
+        format: 'A4'
+        // width: '297mm',
+        // height: '400mm',
       }, function(err, buffer) {
-        console.log(err);
         res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + '.pdf');
         res.sendFile(buffer.filename);
       });
     });
   });
-
-
 });
 
-app.get('/admin/:id*?', function (req, res) {
-  res.sendFile(__dirname + '/admin/index.html');
+app.get('/resume/:name/edit', function (req, res) {
+  res.sendFile(__dirname + '/editor/index.html');
 });
 
 var webpackDevServer = new WebpackDevServer(webpack(config), {

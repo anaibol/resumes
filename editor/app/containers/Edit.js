@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
-import { bindActionCreators } from 'redux'
 import { connect, PromiseState } from 'react-refetch'
-import ResumeView from '../components/ResumeView'
+import ResumeView from '../components/View'
 import DumpInput from '../components/DumpInput'
 import * as ResumeActions from '../actions/resume'
-import ResumeForm from '../components/ResumeForm'
+import Form from '../components/Form'
 
 export default class Edit extends Component {
 	// createResume = (name, obj) => this.props.actions.createResume(name, obj);
@@ -12,31 +11,35 @@ export default class Edit extends Component {
 	// deleteResume = name => this.props.deleteResume(name);
 
   render() {
-    const { getResume, postResume, deleteResume } = this.props
+    const { getSchema, getResume, postResume, deleteResume } = this.props
 
-		if (getResume.pending) {
+    const allFetches = PromiseState.all([getSchema, getResume])
+
+    if (allFetches.pending) {
 	    return <span>loading</span>
-	  } else if (getResume.rejected) {
+	  } else if (allFetches.rejected) {
 	    return <span></span>
-	    return <span>{getResume.reason}</span>
-	  } else if (getResume.fulfilled) {
-	    return <ResumeForm resume={getResume.value} onPost={postResume} onDelete={deleteResume} />
+	    return <span>{allFetches.reason}</span>
+	  } else if (allFetches.fulfilled) {
+      const [schema, resume] = allFetches.value
+	    return <Form schema={schema} resume={resume} onPost={postResume} onDelete={deleteResume} />
 		}
 	}
 }
 
 export default connect(props => ({
-  getResume: `/api/resumes/${props.routeParams.name}`,
+  getSchema: '/api/schema',
+  getResume: `/api/resume/${props.routeParams.name}`,
   postResume: resume => ({
     postResumeResponse: {
-      url: `/api/resumes/${props.routeParams.name}`,
+      url: `/api/resume/${props.routeParams.name}`,
       method: 'POST',
       body: JSON.stringify({ resume })
     }
   }),
   deleteResume: name => ({
     deleteResumeResponse: {
-      url: `/api/resumes/${props.routeParams.name}/delete`,
+      url: `/api/resume/${props.routeParams.name}/delete`,
       method: 'POST',
       body: JSON.stringify({ resume })
     }

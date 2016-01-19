@@ -281,7 +281,7 @@ body {
   }
 }
 .background-card {
-  padding: 10px 20px;
+  padding: 50px 75px 120px 75px;
 }
 .card-wrapper {
   padding: 5px;
@@ -887,4 +887,13 @@ body {
   .pagebreak {
     page-break-before: always;
   }
+
+	.hide-print {
+		display: none;
+	}
+
+  .detail, .card {
+      page-break-inside: avoid;
+  }
+
 }

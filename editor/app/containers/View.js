@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect, PromiseState } from 'react-refetch'
-import ResumeView from '../components/ResumeView'
+import View from '../components/View'
 import DumpInput from '../components/DumpInput'
 import * as ResumeActions from '../actions/resume'
 
@@ -17,7 +17,7 @@ export default class View extends Component {
 	  } else if (getResume.rejected) {
 	    return <span>{getResume.reason}</span>
 	  } else if (getResume.fulfilled) {
-	    return <ResumeView resume={getResume.value}/>
+	    return <View resume={getResume.value}/>
 		}
 	}
 }

@@ -8,9 +8,9 @@ import { createHistory, useBasename } from 'history';
 import { syncReduxAndRouter, routeReducer } from 'redux-simple-router'
 import reducers from './reducers'
 
-import List from './containers/List'
+// import List from './containers/List'
 import Edit from './containers/Edit'
-import View from './containers/View'
+// import View from './containers/View'
 
 const reducer = combineReducers(Object.assign({}, reducers, {
   routing: routeReducer
@@ -19,18 +19,19 @@ const reducer = combineReducers(Object.assign({}, reducers, {
 const store = createStore(reducer)
 
 const history = useBasename(createHistory)({
-  basename: '/editor',
+  basename: '/resume',
 })
 
 syncReduxAndRouter(history, store)
 
+// <Route path="/" component={List}/>
+// <Route path="/:name" component={View}/>
+// <Route path="/create" component={Edit}/>
+
 ReactDOM.render(
   <Provider store={store}>
 		<Router history={history}>
-			<Route path="/" component={List}/>
-			<Route path="/:name" component={View}/>
 			<Route path="/:name/edit" component={Edit}/>
-			<Route path="/create" component={Edit}/>
 		</Router>
   </Provider>,
  document.getElementById('app'));

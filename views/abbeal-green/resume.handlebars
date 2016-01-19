@@ -4,8 +4,6 @@
       {{!-- <a href="#" class="js-floating-nav-trigger floating-nav-trigger"><i class="icon-bars"></i><span class="close-icon">&times;</span></a> --}}
       <section class="col-md-3 card-wrapper profile-card-wrapper affix">
         <div class="card profile-card">
-          <a href="./resume/{{slugName}}/download" download>Download as PDF</a>
-          <a href="javascript:void(0)" onclick="printDocument('pdfDocument')">Print</a>
           <div><img alt="{{basics.name}}" src="./css/abbeal-green/logo-abbeal.png" itemprop="image" class="media-object center-block"/></div>
           <span class="profile-pic-container">
             <div class="profile-pic">
@@ -17,11 +15,14 @@
             <div class="name-and-profession text-center">
               <h4 itemprop="name"><b>{{basics.name}}</b></h3>
               <h5 itemprop="jobTitle" class="text-muted">{{basics.label}}</h5>
+              <span class="icon"><i class="icon fs-lg icon-newspaper"></i></span>
+              <a href="./resume/{{slugName}}/download" class="hide-print" download>Download as PDF</a>
+              {{!-- <a href="javascript:void(0)" onclick="printDocument('pdfDocument')" class="hide-print">Print</a> --}}
             </div>
           </span>
           <hr/>
           <div class="contact-details clearfix">
-            <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">{{basics.location.address}}, {{basic.location.cty}}, {{basics.location.region}}, {{basics.location.countryCode}}, {{basics.location.postalCode}}</span></div>
+            <div class="detail"><span class="icon"><i class="icon fs-lg icon-location"></i></span><span class="info">{{basics.location.address}} {{basic.location.cty}} {{basics.location.region}} {{basics.location.countryCode}} {{basics.location.postalCode}}</span></div>
             <div class="detail"><span class="icon"><i class="icon fs-lg icon-phone"></i></span><span itemprop="telephone" class="info">{{basics.phone}}</span></div>
             <div class="detail">
               <span class="icon"><i class="icon fs-lg icon-mail"></i></span>
@@ -64,7 +65,7 @@
                   <ul class="list-unstyled">
                     <div class="space-top labels">
                     {{#each skills}}
-                        {{!-- <span class="label label-keyword">{{@key}}</span> --}}
+                        <span class="label label-keyword">{{@key}}</span>
                         {{#each this}}
                           <span class="label label-keyword">{{.}}</span>
                         {{/each}}
@@ -83,9 +84,11 @@
                   {{#each works}}
                   <li class="card card-nested clearfix">
                     <p class="relative"><strong>{{position}}</strong>,&nbsp;<a href="{{website}}" target="_blank">{{company}}</a></p>
+                    {{#if logo}}
                     <div class="company-logo pull-left clear-margin clear-padding">
-                      <img src="{{logo}}" class="img-responsive" />
+                      <img src="{{logo}}" class="img-responsive" onerror="this.parentNode.style.display='none'" />
                     </div>
+                    {{/if}}
                     <div class="content">
                       <p class="text-muted"><small><span class="space-right">{{startDate}} - {{endDate}}</span><span><i class="icon-clock mr-5"></i>{{formatDate startDate endDate}}</span></small></p>
                       <p>{{summary}}</p>
