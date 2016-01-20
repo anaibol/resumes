@@ -7,8 +7,6 @@ var app = express();
 
 app.use(bodyParser.json());
 
-var request = require('request');
-
 var proxy = require('proxy-middleware');
 var url = require('url');
 
