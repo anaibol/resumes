@@ -5,8 +5,8 @@ import { Provider } from 'react-redux'
 import { Router, Route } from 'react-router'
 import { createHistory, useBasename } from 'history';
 
-import { syncReduxAndRouter, routeReducer } from 'redux-simple-router'
-import reducers from './reducers'
+// import { syncReduxAndRouter, routeReducer } from 'redux-simple-router'
+// import reducers from './reducers'
 
 // import List from './containers/List'
 import Edit from './containers/Edit'
