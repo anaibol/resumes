@@ -1,7 +1,11 @@
 var express = require('express');
+var bodyParser = require('body-parser');
+
 var expressHandlebars  = require('express-handlebars');
 
 var app = express();
+
+app.use(bodyParser.json());
 
 var request = require('request');
 
@@ -76,12 +80,9 @@ app.use(function(req, res, next) {
 app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
 app.use('/css', express.static(__dirname + '/theme/'));
 
-app.get('/api/resume', function (req, res) {
-  res.sendFile(__dirname + '/resumes/' + req.params.name + '.json');
-});
 
 app.get('/api/schema', function (req, res) {
-  res.sendFile(__dirname + '/jsonSchema.json');
+  res.sendFile(__dirname + '/schema.json');
 });
 
 app.get('/api/resume/:name', function (req, res) {
@@ -89,10 +90,15 @@ app.get('/api/resume/:name', function (req, res) {
 });
 
 app.post('/api/resume/:name', function (req, res) {
-  jsonfile.writeFile('./resumes/' + req.params.name + '.json', req.params.json, function(err, resume) {
-    res.json(resume)
-  });
-});
+  jsonfile.writeFile(__dirname + '/resumes/' + req.params.name + '.json', req.body.resume, {spaces: 2}, function (err) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500)
+    } else {
+      res.send(true)
+    }
+  })
+x});
 
 app.get('/resume/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {

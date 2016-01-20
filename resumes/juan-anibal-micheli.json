@@ -37,12 +37,19 @@
       "summary": "ES6/ES7, Redux, React, NodeJS, ExpressJS, React Router, lazy-loading (chunks), critical rendering path",
       "highlights": [],
       "skills": {
-        "Languages": ["Javascript", "PHP"],
+        "Languages": [
+          "Javascript",
+          "PHP"
+        ],
         "Tests": [],
-        "Frameworks, CMS-API": ["AngularJS"],
+        "Frameworks, CMS-API": [
+          "AngularJS"
+        ],
         "Servers": [],
         "Continuous Integration": [],
-        "IDE": ["Sublime Text 2"]
+        "IDE": [
+          "Sublime Text 2"
+        ]
       }
     },
     {
@@ -55,12 +62,19 @@
       "summary": "Zehnergroup is a US based agency. Working remotely from Argentina and Europe I developed several projects. Some PHP and Wordpress on Vagrant, some beautiful static sites and some ES6 + Flux + React + Docker.",
       "highlights": [],
       "skills": {
-        "Languages": ["Javascript", "PHP"],
+        "Languages": [
+          "Javascript",
+          "PHP"
+        ],
         "Tests": [],
-        "Frameworks, CMS-API": ["ReactJS"],
+        "Frameworks, CMS-API": [
+          "ReactJS"
+        ],
         "Servers": [],
         "Continuous Integration": [],
-        "IDE": ["Atom"]
+        "IDE": [
+          "Atom"
+        ]
       }
     },
     {
@@ -72,12 +86,19 @@
       "summary": "Built an event promotion platform from scratch using MongoDB, ExpressJS, AngularJS and Node.js.\nChoice of technologies, decision taking, devising.\nA lot of interaction with Facebook API (Graph API, FQL, invitations, RSVP..). SEO, web scraping, geospatial search, frontend performance optimization, POC with Polymer.",
       "highlights": [],
       "skills": {
-        "Languages": ["Javascript", "PHP"],
+        "Languages": [
+          "Javascript",
+          "PHP"
+        ],
         "Tests": [],
-        "Frameworks, CMS-API": ["Zend"],
+        "Frameworks, CMS-API": [
+          "Zend"
+        ],
         "Servers": [],
         "Continuous Integration": [],
-        "IDE": ["Webstorm"]
+        "IDE": [
+          "Webstorm"
+        ]
       }
     },
     {
@@ -87,12 +108,19 @@
       "startDate": "2014-01-01",
       "summary": "Built an admin panel for administrating the main site entities. I used AngularJS and Bootstrap UI communicating with a RPC-JSON API with JWT based authentification.",
       "skills": {
-        "Languages": ["Javascript", "PHP"],
+        "Languages": [
+          "Javascript",
+          "PHP"
+        ],
         "Tests": [],
-        "Frameworks, CMS-API": ["AngularJS"],
+        "Frameworks, CMS-API": [
+          "AngularJS"
+        ],
         "Servers": [],
         "Continuous Integration": [],
-        "IDE": ["Sublime Text 2"]
+        "IDE": [
+          "Sublime Text 2"
+        ]
       },
       "highlights": [
         "Build an algorithm for artist to detect if their music was violating copy right infringement laws",
@@ -207,7 +235,7 @@
   ],
   "references": [
     {
-      "name": "Erlich Bachman",
+      "name": "Erlich Bachmanssn",
       "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
     }
   ]

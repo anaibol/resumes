@@ -40,8 +40,8 @@
             "location":{
                "type":"object",
                "additionalProperties":false,
-               "properties":{
-                  "address":{
+               "properties": {
+                  "address": {
                      "type":"string",
                      "description":"To add multiple address lines, use \n. For example, 1234 Glücklichkeit Straße\nHinterhaus 5. Etage li."
                   },
@@ -84,7 +84,8 @@
                   }
                }
             }
-         }
+         },
+         "required": ["name", "label", "email", "summary"]
       },
       "works":{
          "type":"array",

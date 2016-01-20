@@ -4,22 +4,6 @@ import Form from "react-jsonschema-form"
 // import { Link } from 'react-router'
 // import slugify from 'slugify'
 
-const schema = {
-  title: "Todo Tasks",
-  type: "object",
-  required: ["title"],
-  properties: {
-    title: {type: "string", title: "Title", default: "A new task"},
-    done: {type: "boolean", title: "Done?", default: false}
-  }
-};
-
-const formData = {
-  title: "First task",
-  done: true
-};
-
-
 // import Divider from 'material-ui/lib/divider'
 // import Paper from 'material-ui/lib/paper'
 // import TextField from 'material-ui/lib/text-field'
