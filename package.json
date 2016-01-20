@@ -22,12 +22,8 @@
     "react-dom": "^0.14.6",
     "react-flexgrid": "^0.7.0",
     "react-jsonschema-form": "^0.9.2",
-    "react-redux": "^4.0.6",
     "react-refetch": "^0.6.0",
     "react-router": "^1.0.3",
-    "redux": "^3.0.5",
-    "request": "^2.67.0",
-    "resume-to-markdown": "0.0.14",
     "slugify": "^0.1.1",
     "webpack": "^1.12.11",
     "webpack-dev-server": "^1.14.1"
