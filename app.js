@@ -14,8 +14,6 @@ var url = require('url');
 
 var jsonfile = require('jsonfile');
 
-var jsonResume = require('./jsonResume');
-
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var config = require('./webpack.config.js');

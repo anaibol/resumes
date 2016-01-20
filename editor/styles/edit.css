@@ -1,0 +1,7 @@
+.rjsf fieldset {
+  border: none;
+}
+
+span::first-letter {
+    text-transform: uppercase !important;
+}

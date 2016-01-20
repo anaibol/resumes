@@ -10,11 +10,9 @@ module.exports = {
   ],
   devtool: 'source-map',
   resolve: {
-    extensions: ['', '.jsx', '.css', '.js', '.json'],
+    modulesDirectories: ['node_modules', './app'],
+    extensions: ['', '.jsx', '.css', '.js', '.json']
   },
-  // resolve: {
-  //   modulesDirectories: ['node_modules', 'components']
-  // },
   output: {
     filename: "app.js",
     path: __dirname + "/dist",
@@ -26,10 +24,13 @@ module.exports = {
         exclude: /node_modules/,
         loaders: ["babel-loader"],
       },
-      // {
-      //   test: /\.css$/,
-      //   loader: "style!css"
-      // },
+      {
+        test: /\.css$/,
+        loader: "style!css!postcss"
+      },
+      { test: /\.handlebars$/,
+        loader: "handlebars-loader"
+      }
     ],
   },
   // postcss: function () {
@@ -38,9 +39,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    // new ExtractTextPlugin('index.css', {
-    //   publicPath: '/css/',
-    //   allChunks: true
-    // })
+    // new ExtractTextPlugin('./assets/styles.css')
   ]
 }
