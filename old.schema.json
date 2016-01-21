@@ -16,6 +16,10 @@
                "type":"string",
                "description":"e.g. Web Developer"
             },
+            "picture":{
+               "type":"string",
+               "description":"URL to a picture in JPEG or PNG format."
+            },
             "email":{
                "type":"string",
                "description":"e.g. hey@anib.al",
@@ -23,7 +27,7 @@
             },
             "phone":{
                "type":"string",
-               "description":"e.g.  +33 06 8994 0397 (use any format you like)"
+               "description":"e.g. 712-117-2923 (use any format you like)"
             },
             "website":{
                "type":"string",
@@ -36,19 +40,31 @@
             },
             "location":{
                "type":"object",
-               "additionalProperties": false,
+               "additionalProperties":false,
                "properties": {
+                  "address": {
+                     "type":"string",
+                     "description":"To add multiple address lines, use \n. For example, 1234 Glücklichkeit Straße\nHinterhaus 5. Etage li."
+                  },
                   "postalCode":{
                      "type":"string"
                   },
                   "city":{
                      "type":"string"
+                  },
+                  "countryCode":{
+                     "type":"string",
+                     "description":"code as per ISO-3166-1 ALPHA-2, e.g. US, AU, IN"
+                  },
+                  "region":{
+                     "type":"string",
+                     "description":"The general region where you live. Can be a US state, or a province, for instance."
                   }
                }
             },
             "profiles":{
                "type":"array",
-               "description":"Specify any number of profiles",
+               "description":"Specify any number of social networks that you participate in",
                "additionalItems":false,
                "items":{
                   "type":"object",
@@ -56,15 +72,15 @@
                   "properties":{
                      "network":{
                         "type":"string",
-                        "description":"e.g. Github profile"
+                        "description":"e.g. Facebook or Twitter"
                      },
                      "username":{
                         "type":"string",
-                        "description":"e.g. anaibol"
+                        "description":"e.g. neutralthoughts"
                      },
                      "url":{
                         "type":"string",
-                        "description":"e.g. http://github.com/anaibol"
+                        "description":"e.g. http://twitter.com/neutralthoughts"
                      }
                   }
                }
@@ -94,12 +110,12 @@
                },
                "logo":{
                   "type":"string",
-                  "description":"e.g. http://facebook.com/images/logo.png",
+                  "description":"e.g. http://facebook.com",
                   "format":"uri"
                },
                "startDate":{
                   "type":"string",
-                  "description":"e.g. 2014-06-29",
+                  "description":"resume.json uses the ISO 8601 date standard e.g. 2014-06-29",
                   "format":"date"
                },
                "endDate":{
@@ -147,7 +163,7 @@
             "properties":{
                "organization":{
                   "type":"string",
-                  "description":"e.g. Greenpeace"
+                  "description":"e.g. Facebook"
                },
                "position":{
                   "type":"string",
@@ -155,12 +171,12 @@
                },
                "website":{
                   "type":"string",
-                  "description":"e.g. http://greenpeace.com",
+                  "description":"e.g. http://facebook.com",
                   "format":"uri"
                },
                "startDate":{
                   "type":"string",
-                  "description":"e.g. 2014-06-29",
+                  "description":"resume.json uses the ISO 8601 date standard e.g. 2014-06-29",
                   "format":"date"
                },
                "endDate":{

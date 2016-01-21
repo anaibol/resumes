@@ -16,20 +16,21 @@ module.exports = {
   output: {
     filename: "app.js",
     path: __dirname + "/dist",
+    publicPath: '/admin/assets/'
   },
   module: {
     loaders: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ["babel-loader"],
+        loaders: ["babel"],
       },
       {
         test: /\.css$/,
         loader: "style!css!postcss"
       },
       { test: /\.handlebars$/,
-        loader: "handlebars-loader"
+        loader: "handlebars"
       }
     ],
   },

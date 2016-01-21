@@ -1,7 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var expressHandlebars  = require('express-handlebars');
+var expressHandlebars = require('express-handlebars');
 
 var app = express();
 
@@ -22,15 +22,15 @@ var pdf = require('html-pdf');
 
 var moment = require('moment');
 
-var _ = require('lodash')
+var _ = require('lodash');
 
 var hbs = expressHandlebars({
   defaultLayout: 'layout',
   extname: '.handlebars',
   helpers: {
     formatDate: function(startDate, endDate) {
-      startDate = moment('01-' + startDate, "DD-MM-YYYY");
-      endDate = moment('01-' + endDate, "DD-MM-YYYY");
+      startDate = moment('01-' + startDate, 'DD-MM-YYYY');
+      endDate = moment('01-' + endDate, 'DD-MM-YYYY');
 
       var years = endDate.diff(startDate, 'year');
       startDate.add(years, 'years');
@@ -68,8 +68,8 @@ app.engine('.handlebars', hbs);
 app.set('view engine', '.handlebars');
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -94,7 +94,7 @@ app.post('/api/resume/:name', function (req, res) {
       res.send(true)
     }
   })
-x});
+});
 
 app.get('/resume/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
@@ -102,12 +102,12 @@ app.get('/resume/:name', function (req, res) {
 
     if (resume.works) {
       var skills = {
-        "Languages": [],
-        "Tests": [],
-        "Frameworks, CMS-API": [],
-        "Servers": [],
-        "Continuous Integration": [],
-        "IDE": []
+        'Languages': [],
+        'Tests': [],
+        'Frameworks, CMS-API': [],
+        'Servers': [],
+        'Continuous Integration': [],
+        'IDE': []
       }
 
       resume.works.forEach(function(work) {
@@ -142,12 +142,12 @@ app.get('/resume/:name/download', function (req, res) {
 
     if (resume.works) {
       var skills = {
-        "Languages": [],
-        "Tests": [],
-        "Frameworks, CMS-API": [],
-        "Servers": [],
-        "Continuous Integration": [],
-        "IDE": []
+        'Languages': [],
+        'Tests': [],
+        'Frameworks, CMS-API': [],
+        'Servers': [],
+        'Continuous Integration': [],
+        'IDE': []
       }
 
       resume.works.forEach(function(work) {
@@ -187,20 +187,19 @@ app.get('/resume/:name/download', function (req, res) {
   });
 });
 
-app.get('/resume/:name/edit', function (req, res) {
+app.get(['/resume/:name/edit', '/resume/:name/create'], function (req, res) {
   res.sendFile(__dirname + '/editor/index.html');
 });
 
 var webpackDevServer = new WebpackDevServer(webpack(config), {
-    contentBase: __dirname,
     hot: true,
     quiet: false,
     noInfo: false,
-    publicPath: "/assets/",
+    publicPath: '/assets/',
     stats: { colors: true }
 });
 
-webpackDevServer.listen(8080, "localhost", function() {});
+webpackDevServer.listen(8080, 'localhost', function() {});
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

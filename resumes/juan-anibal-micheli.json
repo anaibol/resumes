@@ -1,29 +1,24 @@
 {
   "basics": {
-    "name": "Juan Anibal Micheli",
-    "label": "Fullstack Javascript Engineer",
-    "picture": "",
+    "name": "Juan Anibal Micheli1",
+    "label": "Fullstack Javascript Engineer1",
     "email": "juananibal.micheli@gmail.com",
-    "phone": "(912) 555-4321",
+    "phone": "(912) 555-43211",
     "website": "http://anib.al",
-    "summary": "I am a creative, dynamic, curious, prolific web developer. I like feeling comfortable with the entire stack needed for a web project, from layout and client-side application structure, to backend development and server infrastructure. I am always pursuing new technologies, frameworks and libraries, and I believe web technologies will be soon a multi-platform standard, used for common mobile apps and even for programming robots! And of course, I am in love with Javascript :)",
+    "summary": "I am a creative, dynamic, curious, prolific web developer. I like feeling comfortable with the entire stack needed for a web project, from layout and client-side application structure, to backend development and server infrastructure. I am always pursuing new technologies, frameworks and libraries, and I believe web technologies will be soon a multi-platform standard, used for common mobile apps and even for programming robots! And of course, I am in love with Javascript :)1",
     "location": {
-      "address": "23 Rue de la PAIX",
-      "postalCode": "93240",
-      "city": "Paris",
-      "countryCode": "FR",
-      "region": ""
+      "city": "Paris"
     },
     "profiles": [
       {
-        "network": "Twitter",
-        "username": "neutralthoughts",
-        "url": ""
+        "network": "Twitter1",
+        "username": "neutralthoughts1",
+        "url": "http://github.com/anaibol/"
       },
       {
         "network": "Github",
         "username": "anaibol",
-        "url": ""
+        "url": "http://github.com/anaibol"
       }
     ]
   },
@@ -236,7 +231,7 @@
   "references": [
     {
       "name": "Erlich Bachmanssn",
-      "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company."
+      "reference": "It is my pleasure to recommend Richard, his performance working as a consultant for Main St. Company proved that he will be a valuable addition to any company.ss"
     }
   ]
 }
