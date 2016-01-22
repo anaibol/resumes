@@ -95,6 +95,11 @@ export default class Edit extends Component {
     // // return true;
   };
 
+  postResume = (resume) => {
+    console.log(resume);
+    this.props.postResume(resume)
+  };
+
   render() {
     const { getSchema, getResume, postResume } = this.props
     const allFetches = PromiseState.all([getSchema, getResume])
@@ -138,7 +143,7 @@ export default class Edit extends Component {
               <Form schema={schema}
                 formData={resume}
                 onChange={this.updateView}
-                onSubmit={postResume}
+                onSubmit={this.postResume}
                 onError={this.log("errors")} />
             </Col>
           </Row>
@@ -157,13 +162,13 @@ export default class Edit extends Component {
 export default connect(props => ({
   getSchema: '/api/schema',
   getResume: `/api/resume/${props.routeParams.name}`,
-  // postResume: resume => ({
-  //   getResume: {
-  //     url: `/api/resume/${props.routeParams.name}`,
-  //     method: 'POST',
-  //     body: JSON.stringify({ resume: resume.formData })
-  //   }
-  // }),
+  postResume: resume => ({
+    getResume: {
+      url: `/api/resume/${props.routeParams.name}`,
+      method: 'POST',
+      body: JSON.stringify({ resume: resume.formData })
+    }
+  }),
   deleteResume: name => ({
     deleteResumeResponse: {
       url: `/api/resume/${props.routeParams.name}/delete`,

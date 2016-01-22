@@ -14,10 +14,6 @@ var url = require('url');
 
 var jsonfile = require('jsonfile');
 
-var webpack = require('webpack');
-var WebpackDevServer = require('webpack-dev-server');
-var config = require('./webpack.config.js');
-
 var md5 = require('md5');
 
 var pdf = require('html-pdf');
@@ -83,7 +79,8 @@ app.use(function(req, res, next) {
   }
 });
 
-app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
+app.use('/admin/assets', express.static(__dirname + '/dist/'));
+app.use('/css', express.static(__dirname + '/theme/'));
 app.use('/css', express.static(__dirname + '/theme/'));
 
 
@@ -198,17 +195,7 @@ app.get(['/resume/:name/edit', '/resume/:name/create'], function (req, res) {
   res.sendFile(__dirname + '/editor/index.html');
 });
 
-var webpackDevServer = new WebpackDevServer(webpack(config), {
-    hot: true,
-    quiet: false,
-    noInfo: false,
-    publicPath: '/assets/',
-    stats: { colors: true }
-});
-
-webpackDevServer.listen(8080, 'localhost', function() {});
-
-var server = app.listen(3000, function () {
+var server = app.listen(8080, function () {
   var host = server.address().address;
   var port = server.address().port;
 

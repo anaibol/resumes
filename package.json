@@ -2,7 +2,7 @@
   "name": "resumes",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "animate.css": "^3.4.0",
     "babel-cli": "^6.4.5",
@@ -56,8 +56,9 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start-dev": "nodemon app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start-dev": "nodemon app.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "NODE_ENV=production webpack -p --progress"
   },
   "author": "",
   "license": "ISC"
