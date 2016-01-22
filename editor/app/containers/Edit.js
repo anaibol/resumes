@@ -21,11 +21,11 @@ import '../../styles/react-toaster.css'
 const uiSchema = {
   basics: {
     classNames: 'basics',
-    email: {
-      'ui:widget': ({ placeholder }) => {
-        return <input type="email" placeholder={ placeholder } />
-      }
-    },
+    // email: {
+    //   'ui:widget': ({ placeholder }) => {
+    //     return <input type="email" placeholder={ placeholder } />
+    //   }
+    // },
     summary: {
       'ui:widget': ({ placeholder }) => {
         return <textarea placeholder={ placeholder } />
@@ -81,7 +81,7 @@ export default class Edit extends Component {
 
   updateView = (e) => {
     const formData = e.formData
-    console.log(e)
+    // console.log(e)
     //
     // if (this.state.tmpResume.basics) {
     //   console.log(this.state.tmpResume.basics.name);
@@ -93,11 +93,6 @@ export default class Edit extends Component {
     // // this.setState({resume: formData})
     // console.log(this.state.resume);
     // // return true;
-  };
-
-  postResume = (resume) => {
-    console.log(resume);
-    this.props.postResume(resume)
   };
 
   render() {
@@ -118,7 +113,7 @@ export default class Edit extends Component {
               <Form schema={schema}
                 uiSchema={uiSchema}
                 onChange={this.updateView}
-                onSubmit={postResume}
+                onSubmit={this.props.postResume}
                 onError={this.log("errors")} />
             </Col>
             <Col xs={6} md={6}>
@@ -132,8 +127,7 @@ export default class Edit extends Component {
       null}
     } else if (allFetches.fulfilled) {
       const [schema, resume] = allFetches.value
-      console.log(resume);
-      return (
+        return (
         <Grid>
           <ToastContainer ref="container"
             toastMessageFactory={ToastMessageFactory}
@@ -143,7 +137,7 @@ export default class Edit extends Component {
               <Form schema={schema}
                 formData={resume}
                 onChange={this.updateView}
-                onSubmit={this.postResume}
+                onSubmit={this.props.postResume}
                 onError={this.log("errors")} />
             </Col>
           </Row>

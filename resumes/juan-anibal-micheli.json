@@ -1,6 +1,6 @@
 {
   "basics": {
-    "name": "Juan Anibal Micheli3",
+    "name": "Juan Anibal Micheli",
     "label": "Fullstack Javascript Engineer",
     "email": "juananibal.micheli@gmail.com",
     "phone": "(912) 555-4321",
@@ -8,7 +8,7 @@
     "summary": "I am a creative, dynamic, curious, prolific web developer. I like feeling comfortable with the entire stack needed for a web project, from layout and client-side application structure, to backend development and server infrastructure. I am always pursuing new technologies, frameworks and libraries, and I believe web technologies will be soon a multi-platform standard, used for common mobile apps and even for programming robots! And of course, I am in love with Javascript :)",
     "location": {
       "city": "Paris",
-      "postalCode": "93240"
+      "postalCode": "93241"
     },
     "profiles": [
       {
@@ -18,7 +18,7 @@
       },
       {
         "network": "Github",
-        "username": "anaibol",
+        "username": "anaibolll",
         "url": "http://github.com/anaibol"
       }
     ]
@@ -48,31 +48,6 @@
         ]
       },
       "endDate": "2016-01-10"
-    },
-    {
-      "company": "ZehnerGroup",
-      "position": "Fullstack Software Engineer (Flux, React, ES6, Docker Wordpress, Vagrant)",
-      "website": "http://zehnergroup.com",
-      "logo": "http://zehnergroup.com",
-      "startDate": "2015-01-02",
-      "endDate": "2015-01-09",
-      "summary": "Zehnergroup is a US based agency. Working remotely from Argentina and Europe I developed several projects. Some PHP and Wordpress on Vagrant, some beautiful static sites and some ES6 + Flux + React + Docker.",
-      "highlights": [],
-      "skills": {
-        "Languages": [
-          "Javascript",
-          "PHP"
-        ],
-        "Tests": [],
-        "Frameworks, CMS-API": [
-          "ReactJS"
-        ],
-        "Servers": [],
-        "Continuous Integration": [],
-        "IDE": [
-          "Atom"
-        ]
-      }
     },
     {
       "company": "Wooepa SAS France",

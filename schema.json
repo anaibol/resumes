@@ -23,12 +23,11 @@
             },
             "phone":{
                "type":"string",
-               "description":"e.g.  +33 06 8994 0397 (use any format you like)"
+               "description":"e.g. +33 06 8994 0397 (use any format you like)"
             },
             "website":{
                "type":"string",
-               "description":"URL to your website, e.g. http://anib.al",
-               "format":"uri"
+               "description":"URL to your website, e.g. http://anib.al"
             },
             "summary":{
                "type":"string",

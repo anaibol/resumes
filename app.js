@@ -7,19 +7,19 @@ var app = express();
 
 app.use(bodyParser.json());
 
-var auth = require('basic-auth')
+
 
 var proxy = require('proxy-middleware');
 var url = require('url');
 
 var jsonfile = require('jsonfile');
 
+var auth = require('basic-auth');
+var authUser = jsonfile.readFileSync('./auth.json');
+
 var md5 = require('md5');
-
 var pdf = require('html-pdf');
-
 var moment = require('moment');
-
 var _ = require('lodash');
 
 var hbs = expressHandlebars({
@@ -65,12 +65,9 @@ app.engine('.handlebars', hbs);
 app.set('view engine', '.handlebars');
 
 app.use(function(req, res, next) {
-  // res.header('Access-Control-Allow-Origin', '*');
-  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-
   var credentials = auth(req);
 
-  if (!credentials || credentials.name !== 'john' || credentials.pass !== 'secret') {
+  if (!credentials || credentials.name !== authUser.name || credentials.pass !== authUser.pass) {
     res.statusCode = 401
     res.setHeader('WWW-Authenticate', 'Basic realm="example"')
     res.end('Access denied')
@@ -81,31 +78,40 @@ app.use(function(req, res, next) {
 
 app.use('/admin/assets', express.static(__dirname + '/dist/'));
 app.use('/css', express.static(__dirname + '/theme/'));
-app.use('/css', express.static(__dirname + '/theme/'));
-
 
 app.get('/api/schema', function (req, res) {
   res.sendFile(__dirname + '/schema.json');
 });
 
 app.get('/api/resume/:name', function (req, res) {
-  res.sendFile(__dirname + '/resumes/' + req.params.name + '.json');
+  jsonfile.readFile(__dirname + '/resumes/' + req.params.name + '.json', function(err, resume) {
+    if (err) {
+      console.log(err);
+      res.send({});
+      return;
+    }
+
+    res.send(resume);
+  });
 });
 
 app.post('/api/resume/:name', function (req, res) {
-  jsonfile.writeFile(__dirname + '/resumes/' + req.params.name + '.json', req.body.resume, {spaces: 2}, function (err) {
+  jsonfile.writeFile('./resumes/' + req.params.name + '.json', req.body.resume, {spaces: 2}, function (err) {
     if (err) {
       console.log(err);
       res.sendStatus(500)
     } else {
-      res.send(true)
+      res.send(req.body.resume)
     }
   })
 });
 
 app.get('/resume/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    if (err) return;
+    if (err) {
+      console.log(err);
+      res.sendStatus(500)
+    };
 
     if (resume.works) {
       var skills = {
@@ -145,7 +151,10 @@ app.get('/resume/:name', function (req, res) {
 
 app.get('/resume/:name/download', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    if (err) return;
+    if (err) {
+      console.log(err);
+      res.sendStatus(500)
+    };
 
     if (resume.works) {
       var skills = {
