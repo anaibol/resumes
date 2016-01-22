@@ -7,6 +7,8 @@ var app = express();
 
 app.use(bodyParser.json());
 
+var auth = require('basic-auth')
+
 var proxy = require('proxy-middleware');
 var url = require('url');
 
@@ -29,8 +31,8 @@ var hbs = expressHandlebars({
   extname: '.handlebars',
   helpers: {
     formatDate: function(startDate, endDate) {
-      startDate = moment('01-' + startDate, 'DD-MM-YYYY');
-      endDate = moment('01-' + endDate, 'DD-MM-YYYY');
+      startDate = moment(startDate, 'YYYY-MM-DD');
+      endDate = moment(endDate, 'YYYY-MM-DD');
 
       var years = endDate.diff(startDate, 'year');
       startDate.add(years, 'years');
@@ -58,7 +60,6 @@ var hbs = expressHandlebars({
       }
 
       var duration = yr + ' ' + mn;
-
       return duration
     }
   }
@@ -68,9 +69,18 @@ app.engine('.handlebars', hbs);
 app.set('view engine', '.handlebars');
 
 app.use(function(req, res, next) {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  next();
+  // res.header('Access-Control-Allow-Origin', '*');
+  // res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+
+  var credentials = auth(req);
+
+  if (!credentials || credentials.name !== 'john' || credentials.pass !== 'secret') {
+    res.statusCode = 401
+    res.setHeader('WWW-Authenticate', 'Basic realm="example"')
+    res.end('Access denied')
+  } else {
+    next();
+  }
 });
 
 app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
@@ -175,10 +185,7 @@ app.get('/resume/:name/download', function (req, res) {
       md5email: md5(resume.basics.email)
     }), function(err, html) {
       pdf.create(html, {
-        // A4 size? what is that?
         format: 'A4'
-        // width: '297mm',
-        // height: '400mm',
       }, function(err, buffer) {
         res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + '.pdf');
         res.sendFile(buffer.filename);

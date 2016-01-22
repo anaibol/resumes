@@ -157,13 +157,13 @@ export default class Edit extends Component {
 export default connect(props => ({
   getSchema: '/api/schema',
   getResume: `/api/resume/${props.routeParams.name}`,
-  postResume: resume => ({
-    postResumeResponse: {
-      url: `/api/resume/${props.routeParams.name}`,
-      method: 'POST',
-      body: JSON.stringify({ resume: resume.formData })
-    }
-  }),
+  // postResume: resume => ({
+  //   getResume: {
+  //     url: `/api/resume/${props.routeParams.name}`,
+  //     method: 'POST',
+  //     body: JSON.stringify({ resume: resume.formData })
+  //   }
+  // }),
   deleteResume: name => ({
     deleteResumeResponse: {
       url: `/api/resume/${props.routeParams.name}/delete`,

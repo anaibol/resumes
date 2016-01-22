@@ -44,7 +44,8 @@
                   "city":{
                      "type":"string"
                   }
-               }
+               },
+               "required": ["city", "postalCode"]
             },
             "profiles":{
                "type":"array",

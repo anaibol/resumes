@@ -7,7 +7,11 @@
     <title>{{resume.basics.name}}</title>
     <base href="{{{baseUrl}}}" target="_blank">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="css/{{{theme}}}/resume.css" type="text/css" >
+    <link rel="stylesheet" href="css/{{{theme}}}/resume.css" type="text/css"/>
+    <link rel="stylesheet" type="text/css" href="css/{{{theme}}}/pdf.css" media="print"/>
+    {{#if pdf}}
+      <link rel="stylesheet" href="css/{{{theme}}}/pdf.css" type="text/css"/>
+    {{/if}}
     {{!-- <script type="text/javascript">
       function printDocument(documentId) {
       //     var doc = document.getElementById(documentId);
