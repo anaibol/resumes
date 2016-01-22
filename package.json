@@ -5,11 +5,8 @@
   "main": "app.js",
   "dependencies": {
     "animate.css": "^3.4.0",
-    "babel-cli": "^6.4.5",
-    "babel-core": "^6.4.5",
     "basic-auth": "^1.0.3",
     "body-parser": "^1.14.2",
-    "classnames": "^2.2.3",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "handlebars": "^4.0.5",
@@ -17,7 +14,6 @@
     "html-pdf": "^1.4.0",
     "jsonfile": "^2.2.3",
     "lodash": "^4.0.0",
-    "marked": "^0.3.5",
     "md5": "^2.0.0",
     "moment": "^2.11.1",
     "react": "^0.14.6",
@@ -28,9 +24,7 @@
     "react-router": "^1.0.3",
     "react-toastr": "^2.3.1",
     "slugify": "^0.1.1",
-    "toaster": "^0.1.2",
-    "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "toaster": "^0.1.2"
   },
   "devDependencies": {
     "babel-cli": "^6.4.0",
@@ -47,7 +41,6 @@
     "eslint-plugin-react": "^3.15.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "handlebars-loader": "^1.1.4",
-    "postcss-loader": "^0.8.0",
     "proxy-middleware": "^0.15.0",
     "react-hot-loader": "^1.3.0",
     "style-loader": "^0.13.0",
@@ -60,6 +53,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack -p --progress"
   },
-  "author": "",
+  "author": "Juan Anibal Micheli",
   "license": "ISC"
 }
