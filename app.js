@@ -118,7 +118,7 @@ app.post('/api/resume/:name', function (req, res) {
   })
 });
 
-app.get('/resume/:name', function (req, res) {
+app.get('/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
     if (err) return;
 
@@ -158,7 +158,7 @@ app.get('/resume/:name', function (req, res) {
   });
 });
 
-app.get('/resume/:name/download', function (req, res) {
+app.get('/:name/download', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
     if (err) return;
 
@@ -199,6 +199,7 @@ app.get('/resume/:name/download', function (req, res) {
       pdf.create(html, {
         format: 'A4'
       }, function(err, buffer) {
+        if (err) console.log(err)
         res.setHeader('Content-disposition', 'attachment; filename=' + req.params.name + '.pdf');
         res.sendFile(buffer.filename);
       });
@@ -206,7 +207,7 @@ app.get('/resume/:name/download', function (req, res) {
   });
 });
 
-app.get(['/resume/:name/edit', '/resume/:name/create'], function (req, res) {
+app.get(['/:name/edit', '/:name/create'], function (req, res) {
   res.sendFile(__dirname + '/editor/index.html');
 });
 
