@@ -10,10 +10,13 @@ var pdf = require('html-pdf');
 var moment = require('moment');
 var _ = require('lodash');
 
-
 var app = express();
 
-if (process.env.NODE_ENV === 'developement') {
+var appPort = 8100;
+
+if (process.env.NODE_ENV === 'development') {
+  appPort = 3000;
+
   var webpack = require('webpack');
   var WebpackDevServer = require('webpack-dev-server');
   var config = require('./webpack.config.js');
@@ -27,22 +30,22 @@ if (process.env.NODE_ENV === 'developement') {
   });
 
   webpackDevServer.listen(8080, 'localhost', function() {});
-
-  var auth = require('basic-auth');
-  var authUser = jsonfile.readFileSync('./auth.json');
-
-  app.use(function(req, res, next) {
-    var credentials = auth(req);
-
-    if (!credentials || credentials.name !== authUser.name || credentials.pass !== authUser.pass) {
-      res.statusCode = 401
-      res.setHeader('WWW-Authenticate', 'Basic realm="example"')
-      res.end('Access denied')
-    } else {
-      next();
-    }
-  });
 }
+
+var auth = require('basic-auth');
+var authUser = jsonfile.readFileSync('./auth.json');
+
+app.use(function(req, res, next) {
+  var credentials = auth(req);
+
+  if (!credentials || credentials.name !== authUser.name || credentials.pass !== authUser.pass) {
+    res.statusCode = 401
+    res.setHeader('WWW-Authenticate', 'Basic realm="example"')
+    res.end('Access denied')
+  } else {
+    next();
+  }
+});
 
 app.use(bodyParser.json());
 
@@ -88,7 +91,12 @@ var hbs = expressHandlebars({
 app.engine('.handlebars', hbs);
 app.set('view engine', '.handlebars');
 
-app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
+if (process.env.NDOE_ENV === 'developement') {
+  app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
+} else {
+  app.use('/admin/assets', express.static(__dirname + '/dist/'));
+}
+
 app.use('/css', express.static(__dirname + '/theme/'));
 
 app.get('/api/schema', function (req, res) {
@@ -202,7 +210,7 @@ app.get(['/resume/:name/edit', '/resume/:name/create'], function (req, res) {
   res.sendFile(__dirname + '/editor/index.html');
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(appPort, function () {
   var host = server.address().address;
   var port = server.address().port;
 
