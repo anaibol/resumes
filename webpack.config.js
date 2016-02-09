@@ -27,16 +27,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        loader: "style!css!postcss"
+        loader: "style!css"
       },
       { test: /\.handlebars$/,
         loader: "handlebars"
       }
     ],
   },
-  // postcss: function () {
-  //     return [require('autoprefixer'), require('precss')];
-  // },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),

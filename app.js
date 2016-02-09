@@ -1,26 +1,50 @@
 var express = require('express');
 var bodyParser = require('body-parser');
-
 var expressHandlebars = require('express-handlebars');
-
-var app = express();
-
-app.use(bodyParser.json());
-
-
-
+var auth = require('basic-auth')
 var proxy = require('proxy-middleware');
 var url = require('url');
-
 var jsonfile = require('jsonfile');
-
-var auth = require('basic-auth');
-var authUser = jsonfile.readFileSync('./auth.json');
-
 var md5 = require('md5');
 var pdf = require('html-pdf');
 var moment = require('moment');
 var _ = require('lodash');
+
+
+var app = express();
+
+if (process.env.NODE_ENV === 'developement') {
+  var webpack = require('webpack');
+  var WebpackDevServer = require('webpack-dev-server');
+  var config = require('./webpack.config.js');
+
+  var webpackDevServer = new WebpackDevServer(webpack(config), {
+    hot: true,
+    quiet: false,
+    noInfo: false,
+    publicPath: '/assets/',
+    stats: { colors: true }
+  });
+
+  webpackDevServer.listen(8080, 'localhost', function() {});
+
+  var auth = require('basic-auth');
+  var authUser = jsonfile.readFileSync('./auth.json');
+
+  app.use(function(req, res, next) {
+    var credentials = auth(req);
+
+    if (!credentials || credentials.name !== authUser.name || credentials.pass !== authUser.pass) {
+      res.statusCode = 401
+      res.setHeader('WWW-Authenticate', 'Basic realm="example"')
+      res.end('Access denied')
+    } else {
+      next();
+    }
+  });
+}
+
+app.use(bodyParser.json());
 
 var hbs = expressHandlebars({
   defaultLayout: 'layout',
@@ -64,19 +88,7 @@ var hbs = expressHandlebars({
 app.engine('.handlebars', hbs);
 app.set('view engine', '.handlebars');
 
-app.use(function(req, res, next) {
-  var credentials = auth(req);
-
-  if (!credentials || credentials.name !== authUser.name || credentials.pass !== authUser.pass) {
-    res.statusCode = 401
-    res.setHeader('WWW-Authenticate', 'Basic realm="example"')
-    res.end('Access denied')
-  } else {
-    next();
-  }
-});
-
-app.use('/admin/assets', express.static(__dirname + '/dist/'));
+app.use('/admin/assets', proxy(url.parse('http://localhost:8080/assets')));
 app.use('/css', express.static(__dirname + '/theme/'));
 
 app.get('/api/schema', function (req, res) {
@@ -84,34 +96,23 @@ app.get('/api/schema', function (req, res) {
 });
 
 app.get('/api/resume/:name', function (req, res) {
-  jsonfile.readFile(__dirname + '/resumes/' + req.params.name + '.json', function(err, resume) {
-    if (err) {
-      console.log(err);
-      res.send({});
-      return;
-    }
-
-    res.send(resume);
-  });
+  res.sendFile(__dirname + '/resumes/' + req.params.name + '.json');
 });
 
 app.post('/api/resume/:name', function (req, res) {
-  jsonfile.writeFile('./resumes/' + req.params.name + '.json', req.body.resume, {spaces: 2}, function (err) {
+  jsonfile.writeFile(__dirname + '/resumes/' + req.params.name + '.json', req.body.resume, {spaces: 2}, function (err) {
     if (err) {
       console.log(err);
       res.sendStatus(500)
     } else {
-      res.send(req.body.resume)
+      res.send(true)
     }
   })
 });
 
 app.get('/resume/:name', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500)
-    };
+    if (err) return;
 
     if (resume.works) {
       var skills = {
@@ -151,10 +152,7 @@ app.get('/resume/:name', function (req, res) {
 
 app.get('/resume/:name/download', function (req, res) {
   jsonfile.readFile('./resumes/' + req.params.name + '.json', function(err, resume) {
-    if (err) {
-      console.log(err);
-      res.sendStatus(500)
-    };
+    if (err) return;
 
     if (resume.works) {
       var skills = {
@@ -185,10 +183,10 @@ app.get('/resume/:name/download', function (req, res) {
 
     app.render('abbeal-green' + '/resume', Object.assign(resume, {
       theme: 'abbeal-green',
-      pdf: 'true',
       slugName: req.params.name,
       baseUrl: req.protocol + '://' + req.get('host'),
-      md5email: md5(resume.basics.email)
+      md5email: md5(resume.basics.email),
+      pdf: true
     }), function(err, html) {
       pdf.create(html, {
         format: 'A4'
@@ -204,7 +202,7 @@ app.get(['/resume/:name/edit', '/resume/:name/create'], function (req, res) {
   res.sendFile(__dirname + '/editor/index.html');
 });
 
-var server = app.listen(8080, function () {
+var server = app.listen(3000, function () {
   var host = server.address().address;
   var port = server.address().port;
 

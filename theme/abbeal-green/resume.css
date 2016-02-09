@@ -465,7 +465,7 @@ body {
 @media (max-width: 992px) and (min-width: 768px) {
   .contact-details .detail {
     float: left;
-    width: 25%;
+    width: 20%;
   }
 }
 .social-links {

@@ -49,7 +49,7 @@
   },
   "scripts": {
     "start": "node app.js",
-    "start-dev": "nodemon app.dev.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "NODE_ENV=production webpack -p --progress"
   },
