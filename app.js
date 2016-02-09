@@ -12,7 +12,7 @@ var _ = require('lodash');
 
 var app = express();
 
-var appPort = 8100;
+var appPort = 80;
 
 if (process.env.NODE_ENV === 'development') {
   appPort = 3000;
